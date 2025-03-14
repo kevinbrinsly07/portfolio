@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+/*  
+html {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+html.dark {
+  background-color: #181818;
+  color: #e4e4e4;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+
+a {
+  transition: color 0.3s;
+}
+
+html.dark a {
+  color: #6cc24a; 
+} */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
+
+/* Custom font utilities */
+/* .font-orbitron {
+  font-family: 'Orbitron', sans-serif;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+} */ 
+
+
+
+.bottom-gradient-border {
+  border-bottom: 4px solid;
+  border-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  border-image-slice: 1;
+}
+
+
+.gradient-border {
+  border: 4px solid;
+  border-radius: 9999px; /* Ensures the border is round */
+  border-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+  border-image-slice: 1;
+}
+
+.custom-gradient-background {
+  background-image: radial-gradient(circle farthest-corner at 83.7% 4.3%, rgba(173, 0, 171, 1) 0%, rgba(15, 51, 92, 1) 90%);
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.full-screen-container {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  height: 100px; /* Adjust the height as needed */
+  border: 2px solid #000; /* Border around the container */
+  overflow: hidden; /* Hide text that moves outside the container */
+}
+
+.animate-marquee {
+  display: inline-block;
+  animation: marquee 10s linear infinite; /* Loop the animation */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  padding-left: 100%; /* Start from the right end */
+  line-height: 100px; /* Center text vertically */
+  font-size: 24px; /* Adjust text size as needed */
+}
