@@ -2,19 +2,19 @@ import React from 'react';
 
 const skills = [
   { name: 'React', logo: '/react.png' },
-  { name: 'Vite', logo: 'public/vite.png' },
-  { name: 'React Native', logo: 'public/reactnative.png' },
-  { name: 'NestJS', logo: 'public/nestjs.png' },
-  { name: 'ExpressJS', logo: 'public/express.png' },
-  { name: 'TailwindCSS', logo: 'public/tailwind.png' },
-  { name: 'Java', logo: 'public/java.png' },
-  { name: 'Python', logo: 'public/python.png' },
-  { name: 'PHP', logo: 'public/php.png' },
-  { name: 'JavaScript', logo: 'public/javascript.png' },
-  { name: 'CSS', logo: 'public/css.png' },
-  { name: 'HTML', logo: 'public/html.png' },
-  { name: 'MySQL', logo: 'public/mysql.png' },
-  { name: 'MongoDB', logo: 'public/mongodb.png' },
+  { name: 'Vite', logo: '/vite.png' },
+  { name: 'React Native', logo: '/reactnative.png' },
+  { name: 'NestJS', logo: '/nestjs.png' },
+  { name: 'ExpressJS', logo: '/express.png' },
+  { name: 'TailwindCSS', logo: '/tailwind.png' },
+  { name: 'Java', logo: '/java.png' },
+  { name: 'Python', logo: '/python.png' },
+  { name: 'PHP', logo: '/php.png' },
+  { name: 'JavaScript', logo: '/javascript.png' },
+  { name: 'CSS', logo: '/css.png' },
+  { name: 'HTML', logo: '/html.png' },
+  { name: 'MySQL', logo: '/mysql.png' },
+  { name: 'MongoDB', logo: '/mongodb.png' },
 ];
 
 const Skills = () => {

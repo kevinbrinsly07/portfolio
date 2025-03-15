@@ -3,18 +3,18 @@ import React from 'react';
 const project1 = '/projectsPic/realestate.png'; // Corrected path
 
 const techStacks = {
-  React: './../public/react.png',
-  ReactNative:'./../public/reactnative.png',
-  firebase: './../public/firebase.png',
-  ExpressJS: './../public/express.png',
-  Flask: './../public/flask.png',
-  Python: './../public/python.png',
-  Tailwind: './../public/tailwind.png',
-  HTML: './../public/html.png',
-  CSS: './../public/css.png',
-  JavaScript: './../public/javascript.png',
-  PHP: './../public/php.png',
-  MongoDB: './../public/mongodb.png'
+  React: '/react.png',
+  ReactNative:'/reactnative.png',
+  firebase: '/firebase.png',
+  ExpressJS: '/express.png',
+  Flask: '/flask.png',
+  Python: '/python.png',
+  Tailwind: '/tailwind.png',
+  HTML: '/html.png',
+  CSS: '/css.png',
+  JavaScript: '/javascript.png',
+  PHP: '/php.png',
+  MongoDB: '/mongodb.png'
 };
 
 const projects = [

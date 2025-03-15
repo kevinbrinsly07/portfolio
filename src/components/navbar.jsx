@@ -29,10 +29,10 @@ const Navbar = () => {
         {/* GitHub and LinkedIn Icons */}
         <div className="flex rounded-xl">
           <a href="https://github.com/kevinbrinsly07" target="_blank" rel="noopener noreferrer" className="text-white">
-            <img src="../../public/github.png" alt="GitHub" className="w-6 h-6" />
+            <img src="/github.png" alt="GitHub" className="w-6 h-6" />
           </a>
           <a href="https://www.linkedin.com/in/kevin-brinsly-se/" target="_blank" rel="noopener noreferrer" className="text-white">
-            <img src="../../public/linkedin.png" alt="LinkedIn" className="w-6 h-6 " />
+            <img src="/linkedin.png" alt="LinkedIn" className="w-6 h-6 " />
           </a>
         </div>
 

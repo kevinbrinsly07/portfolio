@@ -1,10 +1,10 @@
 import React from 'react';
 import AniTwo from './aniTwo';
 
-const insta = '../../public/insta.png';
-const facebook = '../../public/facebook.png';
-const x = '../../public/x.png';
-const linkedin = '../../public/linkedin.png';
+const insta = '/insta.png';
+const facebook = '/facebook.png';
+const x = '/x.png';
+const linkedin = '/linkedin.png';
 
 
 

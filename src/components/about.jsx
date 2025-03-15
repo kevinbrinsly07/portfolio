@@ -19,7 +19,7 @@ const About = () => {
           <div className="flex-1 text-center p-6 rounded-lg">
             <div className="absolute top-0 right-0 mt-30 mr-30">
               <img
-                src="../../public/me.png"
+                src="/me.png"
                 alt="Profile"
                 className="w-32 h-32 border-4 border-white rounded-full"
               />
