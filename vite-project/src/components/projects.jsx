@@ -78,12 +78,12 @@ const Projects = () => {
   return (
     <section id="projects" className="py-30 bg-[#010408]">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-15">Projects</h2>
+        <h2 className="text-4xl font-bold text-white mb-15 font-mono">Projects</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="bg-[#161b22] p-6 rounded-lg shadow-md border-2 border-transparent hover:border-[#39FF14] hover:scale-105 transition duration-300 ease-in-out"
+              className="p-6 rounded-lg shadow-md border-2 border-transparent hover:border-[#39FF14] hover:scale-105 transition duration-300 ease-in-out"
             >
               <img
                 src={project.image}

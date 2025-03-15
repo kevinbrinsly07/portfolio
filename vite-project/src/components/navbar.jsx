@@ -5,10 +5,10 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full bg-[#010408] text-white shadow-lg z-10">
+    <header className="fixed w-full bg-[#010408] text-white shadow-lg z-10 font-mono">
       <nav className="w-full p-8 flex justify-between items-center">
         {/* Logo */}
-        <h1 className="text-xl font-bold text-white">Brinsly</h1>
+        <h1 className="text-xl font-bold text-white">BRINSLY</h1>
 
         {/* Desktop Menu */}
         <ul className="hidden sm:flex space-x-6 flex-grow justify-center">
@@ -27,7 +27,7 @@ const Navbar = () => {
         </ul>
 
         {/* GitHub and LinkedIn Icons */}
-        <div className="flex p-1 border-1 rounded-xl border-[#ffff]">
+        <div className="flex rounded-xl">
           <a href="https://github.com/kevinbrinsly07" target="_blank" rel="noopener noreferrer" className="text-white">
             <img src="../../public/github.png" alt="GitHub" className="w-6 h-6" />
           </a>

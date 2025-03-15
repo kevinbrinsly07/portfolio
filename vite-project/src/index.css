@@ -1,20 +1,11 @@
 @import "tailwindcss";
 
-/*  
-html {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-html.dark {
-  background-color: #181818;
-  color: #e4e4e4;
-}
-
+/* 
 body {
   font-family: 'Roboto', sans-serif;
   transition: background-color 0.3s, color 0.3s; 
 }
+
 
 
 a {
