@@ -1,20 +1,20 @@
 import React from 'react';
 
 const skills = [
-  { name: 'React', logo: '../../public/react.png' },
-  { name: 'Vite', logo: '../../public/vite.png' },
-  { name: 'React Native', logo: '../../public/reactnative.png' },
-  { name: 'NestJS', logo: '../../public/nestjs.png' },
-  { name: 'ExpressJS', logo: '../../public/express.png' },
-  { name: 'TailwindCSS', logo: '../../public/tailwind.png' },
-  { name: 'Java', logo: '../../public/java.png' },
-  { name: 'Python', logo: '../../public/python.png' },
-  { name: 'PHP', logo: '../../public/php.png' },
-  { name: 'JavaScript', logo: '../../public/javascript.png' },
-  { name: 'CSS', logo: '../../public/css.png' },
-  { name: 'HTML', logo: '../../public/html.png' },
-  { name: 'MySQL', logo: '../../public/mysql.png' },
-  { name: 'MongoDB', logo: '../../public/mongodb.png' },
+  { name: 'React', logo: 'public/react.png' },
+  { name: 'Vite', logo: 'public/vite.png' },
+  { name: 'React Native', logo: 'public/reactnative.png' },
+  { name: 'NestJS', logo: 'public/nestjs.png' },
+  { name: 'ExpressJS', logo: 'public/express.png' },
+  { name: 'TailwindCSS', logo: 'public/tailwind.png' },
+  { name: 'Java', logo: 'public/java.png' },
+  { name: 'Python', logo: 'public/python.png' },
+  { name: 'PHP', logo: 'public/php.png' },
+  { name: 'JavaScript', logo: 'public/javascript.png' },
+  { name: 'CSS', logo: 'public/css.png' },
+  { name: 'HTML', logo: 'public/html.png' },
+  { name: 'MySQL', logo: 'public/mysql.png' },
+  { name: 'MongoDB', logo: 'public/mongodb.png' },
 ];
 
 const Skills = () => {
