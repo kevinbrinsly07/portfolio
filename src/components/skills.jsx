@@ -1,7 +1,7 @@
 import React from 'react';
 
 const skills = [
-  { name: 'React', logo: 'public/react.png' },
+  { name: 'React', logo: '/react.png' },
   { name: 'Vite', logo: 'public/vite.png' },
   { name: 'React Native', logo: 'public/reactnative.png' },
   { name: 'NestJS', logo: 'public/nestjs.png' },
