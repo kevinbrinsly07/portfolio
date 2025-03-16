@@ -18,7 +18,7 @@ const Navbar = () => {
                 to={section.toLowerCase()}
                 smooth={true}
                 duration={500}
-                className="text-lg hover:text-[#39FF14] cursor-pointer"
+                className="text-lg hover:text-[#17acff] cursor-pointer"
               >
                 {section}
               </Link>
@@ -27,12 +27,12 @@ const Navbar = () => {
         </ul>
 
         {/* GitHub and LinkedIn Icons */}
-        <div className="flex rounded-xl">
+        <div className="flex items-center justify-center rounded-xl gap-3">
           <a href="https://github.com/kevinbrinsly07" target="_blank" rel="noopener noreferrer" className="text-white">
             <img src="/github.png" alt="GitHub" className="w-6 h-6" />
           </a>
           <a href="https://www.linkedin.com/in/kevin-brinsly-se/" target="_blank" rel="noopener noreferrer" className="text-white">
-            <img src="/linkedin.png" alt="LinkedIn" className="w-6 h-6 " />
+            <img src="/linkedin.png" alt="LinkedIn" className="w-8 h-8 " />
           </a>
         </div>
 

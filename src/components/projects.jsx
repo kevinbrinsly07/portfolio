@@ -1,107 +1,120 @@
-import React from 'react';
+import React from "react";
 
-const project1 = '/projectsPic/realestate.png'; // Corrected path
+const project1 = "/projectsPic/realestate.png"; 
+
+
+import { LinearGradient } from "react-text-gradients";
 
 const techStacks = {
-  React: '/react.png',
-  ReactNative:'/reactnative.png',
-  firebase: '/firebase.png',
-  ExpressJS: '/express.png',
-  Flask: '/flask.png',
-  Python: '/python.png',
-  Tailwind: '/tailwind.png',
-  HTML: '/html.png',
-  CSS: '/css.png',
-  JavaScript: '/javascript.png',
-  PHP: '/php.png',
-  MongoDB: '/mongodb.png'
+  React: "/react.png",
+  ReactNative: "/reactnative.png",
+  firebase: "/firebase.png",
+  ExpressJS: "/express.png",
+  Flask: "/flask.png",
+  Python: "/python.png",
+  Tailwind: "/tailwind.png",
+  HTML: "/html.png",
+  CSS: "/css.png",
+  JavaScript: "/javascript.png",
+  PHP: "/php.png",
+  MongoDB: "/mongodb.png",
 };
 
 const projects = [
   {
-    name: 'Cinemax',
+    name: "Cinemax",
     image: project1,
-    description: 'Developed a movie streaming app frontend using React Native, implementing movie detail pages and a responsive design for iOS and Android platforms, ensuring a seamless user experience.',
-    techStack: ['ReactNative', 'firebase'],
+    description:
+      "Developed a movie streaming app frontend using React Native, implementing movie detail pages and a responsive design for iOS and Android platforms, ensuring a seamless user experience.",
+    techStack: ["ReactNative", "firebase"],
+    githubLink: "https://github.com/kevinbrinsly07/Solo-Initiative-Cinemax", 
   },
   {
-    name: 'SinNews',
+    name: "SinNews",
     image: project1,
-    description: 'Developed a Sinhala news summarizer using React for the frontend and Flask for the backend. Fine-tuned the mT5 model on a custom dataset for Sinhala news summarization and integrated it into the system. Utilized Python for data processing, implemented a responsive UI with Tailwind CSS, and ensured secure handling of news articles.',
-    techStack: ['Python', 'Flask','React', 'Tailwind'],
+    description:
+      "Developed a Sinhala news summarizer using React for the frontend and Flask for the backend. Fine-tuned the mT5 model on a custom dataset for Sinhala news summarization and integrated it into the system. Utilized Python for data processing, implemented a responsive UI with Tailwind CSS, and ensured secure handling of news articles.",
+    techStack: ["Python", "Flask", "React", "Tailwind"],
+    githubLink: "https://github.com/yourusername/sinnews", 
   },
   {
-    name: 'Hometeq',
+    name: "Hometeq",
     image: project1,
-    description: 'Hometeq is a web application built using PHP, MySQL, HTML, and CSS, designed to manage e-commerce functionalities. The backend, powered by PHP, handles user authentication, session management, and database interactions, while MySQL stores product details, user accounts, and orders.',
-    techStack: ['PHP', 'HTML', 'CSS'],
+    description:
+      "Hometeq is a web application built using PHP, MySQL, HTML, and CSS, designed to manage e-commerce functionalities. The backend, powered by PHP, handles user authentication, session management, and database interactions, while MySQL stores product details, user accounts, and orders.",
+    techStack: ["PHP", "HTML", "CSS"],
+    githubLink: "https://github.com/kevinbrinsly07/Hometeq", 
   },
   {
-    name: 'ToDoApp',
+    name: "ToDoApp",
     image: project1,
-    description: 'This Express.js web application provides a simple implementation of CRUD (Create, Read, Update, Delete) operations using MongoDB as the database. It allows users to add new records, retrieve stored data, update existing entries, and delete records seamlessly. The application is built with Node.js and Express.js, utilizing Mongoose for database interactions. It follows a RESTful API structure, making it easy to integrate with frontend applications or other services.',
-    techStack: ['ExpressJS', 'MongoDB'],
+    description:
+      "This Express.js web application provides a simple implementation of CRUD (Create, Read, Update, Delete) operations using MongoDB as the database. It allows users to add new records, retrieve stored data, update existing entries, and delete records seamlessly. The application is built with Node.js and Express.js, utilizing Mongoose for database interactions. It follows a RESTful API structure, making it easy to integrate with frontend applications or other services.",
+    techStack: ["ExpressJS", "MongoDB"],
+    githubLink: "https://github.com/kevinbrinsly07/ToDoApp", 
   },
   {
-    name: 'TicTacToeGame',
+    name: "TicTacToeGame",
     image: project1,
-    description: 'This Vanilla JavaScript code implements a simple two-player Tic-Tac-Toe game. Players take turns clicking buttons to mark “X” or “O”. The game checks for a winner after each move, disables the board upon a win, or shows a draw message if no winner is found. A reset function allows restarting the game with an empty board.',
-    techStack: ['JavaScript', 'HTML', 'CSS'],
+    description:
+      "This Vanilla JavaScript code implements a simple two-player Tic-Tac-Toe game. Players take turns clicking buttons to mark “X” or “O”. The game checks for a winner after each move, disables the board upon a win, or shows a draw message if no winner is found. A reset function allows restarting the game with an empty board.",
+    techStack: ["JavaScript", "HTML", "CSS"],
+    githubLink: "https://github.com/kevinbrinsly07/TicTacToeGame", 
   },
   {
-    name: 'LoginApplication',
+    name: "LoginApplication",
     image: project1,
-    description: 'This project is a Express.js web application with a session-based login system using EJS templating. It handles user authentication, session management, and routing efficiently.',
-    techStack: ['ExpressJS'],
+    description:
+      "This project is a Express.js web application with a session-based login system using EJS templating. It handles user authentication, session management, and routing efficiently.",
+    techStack: ["ExpressJS"],
+    githubLink: "https://github.com/kevinbrinsly07/LoginApplication",
   },
-  // {
-  //   name: 'Project 7',
-  //   image: project1,
-  //   description: 'A real-time chat application built using Socket.io and Express.js.',
-  //   techStack: ['SocketIO', 'ExpressJS'],
-  // },
-  // {
-  //   name: 'Project 8',
-  //   image: project1,
-  //   description: 'A portfolio website built with HTML, CSS, and JavaScript.',
-  //   techStack: ['HTML', 'CSS', 'JavaScript'],
-  // },
-  // {
-  //   name: 'Project 9',
-  //   image: project1,
-  //   description: 'A weather forecasting app built with React and OpenWeather API.',
-  //   techStack: ['React', 'OpenWeatherAPI'],
-  // },
 ];
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-30 bg-[#010408]">
+    <section id="projects" className="py-30">
       <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-15 font-mono">Projects</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-4xl font-bold text-white mb-20 font-mono">
+          <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
+            Projects
+          </LinearGradient>
+        </h2>
+        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-12">
           {projects.map((project, index) => (
-            <div
+            <a
               key={index}
-              className="p-6 rounded-lg shadow-md border-2 border-transparent hover:border-[#39FF14] hover:scale-105 transition duration-300 ease-in-out"
+              href={project.githubLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-8 rounded-lg shadow-md border-2 border-gray-700 hover:border-[#17acff] hover:scale-105 transition duration-300 ease-in-out"
             >
               <img
                 src={project.image}
                 alt={project.name}
                 className="w-full h-64 object-cover rounded-lg mb-4"
               />
-              <h3 className="text-xl font-semibold text-white">{project.name}</h3>
+              <h3 className="text-xl font-semibold text-white font-mono">
+                {project.name}
+              </h3>
               <p className="text-gray-600 mt-2">{project.description}</p>
               {/* Tech Stack */}
               <div className="flex flex-wrap justify-center mt-4">
                 {project.techStack.map((tech, i) => (
-                  <div key={i} className="flex items-center space-x-2 bg-[#222831] px-3 py-1 rounded-lg m-1">
-                    <img src={techStacks[tech]} alt={tech} className="w-6 h-6" />
+                  <div
+                    key={i}
+                    className="flex items-center space-x-2 bg-[#222831] px-3 py-1 rounded-lg m-1"
+                  >
+                    <img
+                      src={techStacks[tech]}
+                      alt={tech}
+                      className="w-6 h-6"
+                    />
                     <span className="text-white text-sm">{tech}</span>
                   </div>
                 ))}
               </div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

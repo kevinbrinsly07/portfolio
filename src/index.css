@@ -1,12 +1,11 @@
 @import "tailwindcss";
 
-/* 
+
 body {
-  font-family: 'Roboto', sans-serif;
-  transition: background-color 0.3s, color 0.3s; 
+  background-color: #010408;
 }
 
-
+/* 
 
 a {
   transition: color 0.3s;
@@ -57,14 +56,6 @@ html.dark a {
   }
 }
 
-.full-screen-container {
-  position: relative;
-  width: 100vw; /* Full viewport width */
-  height: 100px; /* Adjust the height as needed */
-  border: 2px solid #000; /* Border around the container */
-  overflow: hidden; /* Hide text that moves outside the container */
-}
-
 .animate-marquee {
   display: inline-block;
   animation: marquee 10s linear infinite; /* Loop the animation */
@@ -72,4 +63,37 @@ html.dark a {
   padding-left: 100%; /* Start from the right end */
   line-height: 100px; /* Center text vertically */
   font-size: 24px; /* Adjust text size as needed */
+}
+
+
+
+/* Keyframes for bouncing effect */
+@keyframes bounceTech {
+  0%, 100% {
+    transform: translateY(0); /* Start and end at original position */
+  }
+  30% {
+    transform: translateY(-10px); /* Move up */
+  }
+  50% {
+    transform: translateY(0); /* Return to original position */
+  }
+  70% {
+    transform: translateY(-5px); /* Slight move up */
+  }
+  100% {
+    transform: translateY(0); /* Final position */
+  }
+}
+
+/* Apply bounce animation to the tech items */
+.tech-item {
+  animation: bounceTech 3.5s ease-in-out infinite; /* Infinite bounce */
+}
+
+/* Hover effect: Disable bounce on hover and apply scale */
+.tech-item:hover {
+  animation: none; /* Stop bouncing on hover */
+  transform: scale(1.1);
+  border-color: #17acff;
 }

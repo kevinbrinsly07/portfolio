@@ -16,9 +16,12 @@
     "@lottiefiles/dotlottie-react": "^0.13.2",
     "@tailwindcss/vite": "^4.0.14",
     "framer-motion": "^12.5.0",
+    "particles.js": "^2.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-elfsight-widget": "^1.1.2",
     "react-scroll": "^1.9.3",
+    "react-text-gradients": "^1.0.2",
     "react-typed": "^2.0.12",
     "typed.js": "^2.1.0"
   },
