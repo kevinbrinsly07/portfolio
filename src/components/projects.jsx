@@ -1,6 +1,6 @@
 import React from "react";
 
-const project1 = "/projectsPic/realestate.png"; 
+const project1 = "/projectsPic/realestate.jpeg"; 
 
 
 import { LinearGradient } from "react-text-gradients";
