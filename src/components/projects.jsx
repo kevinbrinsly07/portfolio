@@ -73,7 +73,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-30">
+    <section id="projects" className="bg-black py-30">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold text-white mb-20 font-mono">
           <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>

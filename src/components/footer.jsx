@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className=" text-white py-6 px-4 font-mono w-full">
+    <footer className="bg-black text-white py-6 px-4 font-mono w-full">
       <div className="mx-auto flex justify-between items-end p-6">
         {/* Logo and Copyright - Left Side */}
         <div className="text-left">

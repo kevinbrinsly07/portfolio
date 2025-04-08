@@ -1,13 +1,12 @@
 import React from "react";
 import Ani from "./ani";
-import AniThree from "./aniThree";
 import MultipleText from "./multipleText";
 
 import { LinearGradient } from "react-text-gradients";
 
 const About = () => {
   return (
-    <section id="about" className="flex flex-col items-center justify-between">
+    <section id="about" className="flex bg-black flex-col items-center justify-between">
       <div className="container mx-auto px-6 flex flex-col items-center w-full">
         {/* Side-by-side layout of the text and image */}
         <div className="flex w-full h-screen  items-center justify-center mb-12">
@@ -15,16 +14,6 @@ const About = () => {
           <div className="flex-1">
             <MultipleText />
           </div>
-          {/* Image Section */}
-          {/* <div className="flex-1 text-center p-6 rounded-lg">
-            <div className="flex items-center justify-center">
-              <img
-                src="/me.png"
-                alt="Profile"
-                className="w-64 h-64 border-4 border-white rounded-full"
-              />
-            </div>
-          </div> */}
         </div>
 
         {/* About Me Section Below */}
@@ -34,17 +23,17 @@ const About = () => {
               About Me
             </LinearGradient>
           </h2>
-          <p className="text-xl mb-6 text-white font-medium">
+          <p className="text-2xl mb-6 text-white font-medium font-mono">
             As a software engineer, I have gained comprehensive experience in
             full-stack development, utilizing a wide range of technologies to
-            build dynamic and efficient web applications. My technical expertise
-            includes working with modern frontend frameworks such as React,
-            React Native, and Vite, alongside backend technologies like NestJS,
-            ExpressJS, PHP, and Java. I have a strong command of both relational
-            and NoSQL databases, including MySQL and MongoDB, and I’m proficient
-            in various programming languages such as JavaScript, Python, and PHP
+            build dynamic and efficient web applications.My technical expertise
+            includes working with modern frontend frameworks such as <span className="text-yellow-300">React,
+            React Native, and Vite, </span>alongside backend technologies like <span className="text-yellow-300"> NestJS,
+            ExpressJS, PHP, and Java.</span> I have a strong command of both relational
+            and NoSQL databases, including <span className="text-yellow-300">MySQL and MongoDB,</span> and I’m proficient
+            in various programming languages such as <span className="text-yellow-300">JavaScript, Python, and PHP</span>
           </p>
-          <p className="text-xl text-white font-medium">
+          <p className="text-xl text-white font-medium font-mono">
             When I'm not coding, you can find me exploring new tech trends or
             contributing to open-source projects. I'm open to Job opportunities
             where I can contribute, learn and grow. If you have a good

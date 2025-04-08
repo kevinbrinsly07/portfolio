@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full bg-[#010408] text-white shadow-lg z-10 font-mono">
+    <header className="fixed w-full bg-black text-white shadow-lg z-10 font-mono">
       <nav className="w-full p-8 flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-xl font-bold text-white">BRINSLY</h1>

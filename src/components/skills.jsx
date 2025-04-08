@@ -21,7 +21,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className=" pt-80 pb-80">
+    <section id="skills" className="bg-black pt-80 pb-80">
       <div className="container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-30 text-white font-mono">
           <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>

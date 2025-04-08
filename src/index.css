@@ -1,32 +1,11 @@
 @import "tailwindcss";
 
-
-body {
-  background-color: #010408;
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
 }
-
-/* 
-
-a {
-  transition: color 0.3s;
-}
-
-html.dark a {
-  color: #6cc24a; 
-} */
-
-/* @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@300;400;600&display=swap');
-
-/* Custom font utilities */
-/* .font-orbitron {
-  font-family: 'Orbitron', sans-serif;
-}
-
-.font-poppins {
-  font-family: 'Poppins', sans-serif;
-} */ 
-
-
 
 .bottom-gradient-border {
   border-bottom: 4px solid;

@@ -10,7 +10,7 @@ const linkedin = "/linkedin.png";
 
 const Contact = () => {
   return (
-    <section id="contact" className="py-2 text-center pb-30">
+    <section id="contact" className=" bg-black py-2 text-center pb-30">
       <div className="container mx-auto px-6">
         <h2 className="text-4xl font-bold text-white mb-6 font-mono">
           <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
