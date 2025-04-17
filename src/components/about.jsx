@@ -26,9 +26,9 @@ const About = () => {
           <p className="text-2xl mb-6 text-white font-medium font-mono">
             As a software engineer, I have gained comprehensive experience in
             full-stack development, utilizing a wide range of technologies to
-            build dynamic and efficient web applications.My technical expertise
+            build dynamic and efficient web applications. My technical expertise
             includes working with modern frontend frameworks such as <span className="text-yellow-300">React,
-            React Native, and Vite, </span>alongside backend technologies like <span className="text-yellow-300"> NestJS,
+            React Native, </span>alongside backend technologies like <span className="text-yellow-300"> NestJS,
             ExpressJS, PHP, and Java.</span> I have a strong command of both relational
             and NoSQL databases, including <span className="text-yellow-300">MySQL and MongoDB,</span> and I’m proficient
             in various programming languages such as <span className="text-yellow-300">JavaScript, Python, and PHP</span>

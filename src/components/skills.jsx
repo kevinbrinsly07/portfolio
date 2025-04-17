@@ -22,7 +22,7 @@ const skills = [
 const Skills = () => {
   return (
     <section id="skills" className="bg-black pt-80 pb-80">
-      <div className="container mx-auto px-6 text-center">
+      <div className="cursor-pointer container mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-30 text-white font-mono">
           <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
             Technology Stack

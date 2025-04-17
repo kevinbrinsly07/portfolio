@@ -80,7 +80,7 @@ const Projects = () => {
             Projects
           </LinearGradient>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="cursor-pointer grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-12">
           {projects.map((project, index) => (
             <a
               key={index}

@@ -6,7 +6,7 @@ const Navbar = () => {
 
   return (
     <header className="fixed w-full bg-black text-white shadow-lg z-10 font-mono">
-      <nav className="w-full p-8 flex justify-between items-center">
+      <nav className="cursor-pointer w-full p-8 flex justify-between items-center">
         {/* Logo */}
         <h1 className="text-xl font-bold text-white">BRINSLY</h1>
 
@@ -68,7 +68,7 @@ const Navbar = () => {
                   to={section.toLowerCase()}
                   smooth={true}
                   duration={500}
-                  className="block text-lg hover:text-[#7CC433] cursor-pointer"
+                  className="block text-lg hover:text-[#17acff] cursor-pointer"
                   onClick={() => setIsMobileMenuOpen(false)} // Close the menu on click
                 >
                   {section}
