@@ -14,7 +14,7 @@ html {
   box-sizing: border-box;
   background-color: black;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
 }
 
 .bottom-gradient-border {
