@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from "react";
+import React, { useRef, useMemo, useEffect, useState } from "react";
 import { LinearGradient } from "react-text-gradients";
 import {
   // eslint-disable-next-line no-unused-vars
@@ -149,19 +149,35 @@ const projects = [
 
 
 
-const stars = Array.from({ length: 60 }, () => ({
-  top: `${Math.random() * 100}%`,
-  left: `${Math.random() * 100}%`,
-  size: `${Math.random() * 2 + 1}px`,
-  duration: Math.random() * 4 + 2,
-  delay: Math.random() * 6,
-}));
 
 const Projects = () => {
   const sectionRef = useRef(null);
   const fieldRef = useRef(null);
 
-  const CARD_W = 320; // px
+  // responsive viewport + card width + star count
+  const [viewportW, setViewportW] = useState(typeof window !== 'undefined' ? window.innerWidth : 1024);
+  useEffect(() => {
+    const onResize = () => setViewportW(window.innerWidth);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, []);
+  // mobile breakpoint helper
+  const isMobile = viewportW < 640;
+
+  // card width in px (narrower on small screens)
+  const cardW = viewportW < 640 ? 280 : 320;
+
+  // fewer stars on mobile for perf/clarity
+  const starCount = viewportW < 640 ? 30 : 60;
+  const stars = useMemo(() => Array.from({ length: starCount }, () => ({
+    top: `${Math.random() * 100}%`,
+    left: `${Math.random() * 100}%`,
+    size: `${Math.random() * 2 + 1}px`,
+    duration: Math.random() * 4 + 2,
+    delay: Math.random() * 6,
+  })), [starCount]);
+
+  const CARD_W /* deprecated */ = undefined; // replaced by responsive cardW
   const cardEls = useRef([]);
   const heightsRef = useRef(projects.map(() => 240));
 
@@ -175,20 +191,20 @@ const Projects = () => {
   const velsRef = useRef(projects.map(() => ({ vx: (Math.random()*2-1)*60, vy: (Math.random()*2-1)*60 })));
   const draggingRef = useRef(projects.map(() => false));
 
-  // Initialize positions once based on the field size (with a fallback before mount)
+  // Initialize positions once based on the field size (skip on mobile)
   useEffect(() => {
+    if (isMobile) return; // no floating init on mobile
     const el = fieldRef.current;
     const fw = el ? el.clientWidth : 900;
     const fh = el ? el.clientHeight : 700;
     bodies.forEach((b, i) => {
       const h = heightsRef.current[i] || 240;
-      const x = Math.random() * Math.max(1, fw - CARD_W);
+      const x = Math.random() * Math.max(1, fw - cardW);
       const y = Math.random() * Math.max(1, fh - h);
       b.x.set(x);
       b.y.set(y);
     });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isMobile, bodies, fieldRef, cardW]);
 
   useEffect(() => {
     const observers = [];
@@ -205,8 +221,9 @@ const Projects = () => {
     return () => observers.forEach((o) => o.disconnect());
   }, [projects.length]);
 
-  // Physics animation loop
+  // Physics animation loop (disabled on mobile)
   useEffect(() => {
+    if (isMobile) return; // stop animation on mobile
     let raf;
     let last = performance.now();
     const step = (now) => {
@@ -214,26 +231,23 @@ const Projects = () => {
       if (!el) { raf = requestAnimationFrame(step); return; }
       const fw = el.clientWidth;
       const fh = el.clientHeight;
-      const dt = Math.min(0.032, (now - last) / 1000); // cap dt at ~30ms
+      const dt = Math.min(0.032, (now - last) / 1000);
       last = now;
 
-      // integrate and wall bounce
       bodies.forEach((b, i) => {
-        if (draggingRef.current[i]) return; // skip dragging bodies
+        if (draggingRef.current[i]) return;
         const v = velsRef.current[i];
         const h = heightsRef.current[i] || 240;
         let x = b.x.get() + v.vx * dt;
         let y = b.y.get() + v.vy * dt;
-        // walls
         if (x <= 0) { x = 0; v.vx = Math.abs(v.vx); }
-        if (x + CARD_W >= fw) { x = fw - CARD_W; v.vx = -Math.abs(v.vx); }
+        if (x + cardW >= fw) { x = fw - cardW; v.vx = -Math.abs(v.vx); }
         if (y <= 0) { y = 0; v.vy = Math.abs(v.vy); }
         if (y + h >= fh) { y = fh - h; v.vy = -Math.abs(v.vy); }
         b.x.set(x);
         b.y.set(y);
       });
 
-      // pairwise collisions (AABB) with simple separation + velocity swap along minimum overlap axis
       for (let i = 0; i < bodies.length; i++) {
         for (let j = i + 1; j < bodies.length; j++) {
           if (draggingRef.current[i] || draggingRef.current[j]) continue;
@@ -242,22 +256,18 @@ const Projects = () => {
           const xj = bj.x.get(), yj = bj.y.get();
           const hi = heightsRef.current[i] || 240;
           const hj = heightsRef.current[j] || 240;
-          if (xi < xj + CARD_W && xi + CARD_W > xj && yi < yj + hj && yi + hi > yj) {
-            const overlapX = Math.min(xi + CARD_W - xj, xj + CARD_W - xi);
+          if (xi < xj + cardW && xi + cardW > xj && yi < yj + hj && yi + hi > yj) {
+            const overlapX = Math.min(xi + cardW - xj, xj + cardW - xi);
             const overlapY = Math.min(yi + hi - yj, yj + hj - yi);
             const vi = velsRef.current[i];
             const vj = velsRef.current[j];
             if (overlapX < overlapY) {
-              // separate along X
               if (xi < xj) { bi.x.set(xi - overlapX/2); bj.x.set(xj + overlapX/2); }
               else { bi.x.set(xi + overlapX/2); bj.x.set(xj - overlapX/2); }
-              // swap vx with slight restitution
               const tmp = vi.vx; vi.vx = vj.vx * 0.95; vj.vx = tmp * 0.95;
             } else {
-              // separate along Y
               if (yi < yj) { bi.y.set(yi - overlapY/2); bj.y.set(yj + overlapY/2); }
               else { bi.y.set(yi + overlapY/2); bj.y.set(yj - overlapY/2); }
-              // swap vy
               const tmp = vi.vy; vi.vy = vj.vy * 0.95; vj.vy = tmp * 0.95;
             }
           }
@@ -268,7 +278,7 @@ const Projects = () => {
     };
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [bodies, fieldRef]);
+  }, [isMobile, bodies, fieldRef, cardW]);
 
   // Scroll progress for heading underline & subtle parallax
   const { scrollYProgress } = useScroll({
@@ -314,7 +324,7 @@ const Projects = () => {
       {/* ambient animated blobs */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-8 -left-24 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-60"
+        className="hidden sm:block pointer-events-none absolute -top-8 -left-24 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-60"
         animate={{
           x: [0, 25, -15, 0],
           y: [0, -20, 10, 0],
@@ -328,7 +338,7 @@ const Projects = () => {
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -bottom-24 -right-24 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-60"
+        className="hidden sm:block pointer-events-none absolute -bottom-24 -right-24 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-60"
         animate={{
           x: [0, -20, 10, 0],
           y: [0, 18, -8, 0],
@@ -343,11 +353,11 @@ const Projects = () => {
 
       <div
         ref={sectionRef}
-        className="container mx-auto px-6 text-center relative z-10"
+        className="container mx-auto px-4 sm:px-6 text-center relative z-10"
       >
         {/* heading */}
         <motion.h2
-          className="text-4xl font-bold text-white mb-10 font-mono inline-block"
+          className="text-3xl sm:text-4xl font-bold text-white mb-8 sm:mb-10 font-mono inline-block"
           style={{ y: headY }}
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -364,49 +374,58 @@ const Projects = () => {
           />
         </motion.h2>
 
-        {/* orbital float field */}
-        <div ref={fieldRef} className="relative mt-10 h-[720px] sm:h-[760px] md:h-[820px]">
-          {/* subtle space dust */}
-          <div className="absolute inset-0 pointer-events-none" aria-hidden>
-            {Array.from({ length: 40 }).map((_, i) => (
-              <motion.span
-                key={`dust-${i}`}
-                className="absolute w-1 h-1 rounded-full bg-white/30"
-                style={{
-                  left: `${(i * 37) % 100}%`,
-                  top: `${(i * 53) % 100}%`,
-                  opacity: 0.4,
-                }}
-                animate={{ opacity: [0.15, 0.6, 0.15] }}
-                transition={{ duration: 4 + (i % 5), repeat: Infinity, ease: "easeInOut", delay: (i % 7) * 0.2 }}
-              />
+        {/* list layout on mobile; floating field on larger screens */}
+        {isMobile ? (
+          <div className="mt-6 space-y-4">
+            {projects.map((p) => (
+              <div key={`stack-${p.name}`} className="mx-auto max-w-[420px]">
+                <MiniRepoCard p={p} />
+              </div>
             ))}
           </div>
+        ) : (
+          <div ref={fieldRef} className="relative mt-8 h-[560px] sm:h-[720px] md:h-[820px]">
+            {/* subtle space dust */}
+            <div className="absolute inset-0 pointer-events-none" aria-hidden>
+              {Array.from({ length: 40 }).map((_, i) => (
+                <motion.span
+                  key={`dust-${i}`}
+                  className="absolute w-1 h-1 rounded-full bg-white/30"
+                  style={{
+                    left: `${(i * 37) % 100}%`,
+                    top: `${(i * 53) % 100}%`,
+                    opacity: 0.4,
+                  }}
+                  animate={{ opacity: [0.15, 0.6, 0.15] }}
+                  transition={{ duration: 4 + (i % 5), repeat: Infinity, ease: "easeInOut", delay: (i % 7) * 0.2 }}
+                />
+              ))}
+            </div>
 
-          {projects.map((p, i) => (
-            <motion.div
-              key={`float-${p.name}`}
-              className="absolute cursor-grab active:cursor-grabbing select-none"
-              style={{ width: CARD_W, x: bodies[i].x, y: bodies[i].y }}
-              drag
-              dragConstraints={fieldRef}
-              dragElastic={0.12}
-              dragMomentum={true}
-              onDragStart={() => { draggingRef.current[i] = true; velsRef.current[i].vx = 0; velsRef.current[i].vy = 0; }}
-              onDragEnd={(_e, info) => {
-                draggingRef.current[i] = false;
-                // Framer velocity is px/s; damp a bit
-                velsRef.current[i].vx = (info.velocity.x || 0) * 0.02;
-                velsRef.current[i].vy = (info.velocity.y || 0) * 0.02;
-              }}
-              whileHover={{ scale: 1.03 }}
-            >
-              <div ref={(el) => (cardEls.current[i] = el)} className="w-full">
-                <MiniRepoCard p={p} i={i} />
-              </div>
-            </motion.div>
-          ))}
-        </div>
+            {projects.map((p, i) => (
+              <motion.div
+                key={`float-${p.name}`}
+                className="absolute cursor-grab active:cursor-grabbing select-none"
+                style={{ width: cardW, x: bodies[i].x, y: bodies[i].y }}
+                drag
+                dragConstraints={fieldRef}
+                dragElastic={0.12}
+                dragMomentum={true}
+                onDragStart={() => { draggingRef.current[i] = true; velsRef.current[i].vx = 0; velsRef.current[i].vy = 0; }}
+                onDragEnd={(_e, info) => {
+                  draggingRef.current[i] = false;
+                  velsRef.current[i].vx = (info.velocity.x || 0) * 0.02;
+                  velsRef.current[i].vy = (info.velocity.y || 0) * 0.02;
+                }}
+                whileHover={{ scale: 1.03 }}
+              >
+                <div ref={(el) => (cardEls.current[i] = el)} className="w-full">
+                  <MiniRepoCard p={p} i={i} />
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

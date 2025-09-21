@@ -39,7 +39,7 @@ const ghLine = {
 const SpaceHero = () => {
   return (
     <motion.div
-      className="relative w-full max-w-[520px] aspect-square mx-auto"
+      className="relative w-full max-w-[360px] sm:max-w-[420px] lg:max-w-[520px] aspect-[4/5] lg:aspect-square mx-auto"
       initial={{ opacity: 0, scale: 0.9, y: 12 }}
       whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -56,8 +56,8 @@ const SpaceHero = () => {
         animate={{ rotate: 360 }}
         transition={{ repeat: Infinity, duration: 40, ease: "linear" }}
       >
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full " />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full " />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full " />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 sm:w-88 sm:h-88 lg:w-96 lg:h-96 rounded-full " />
       </motion.div>
 
       {/* small orbiting moons */}
@@ -105,7 +105,7 @@ const SpaceHero = () => {
       />
       {/* Animated rocket on the right side */}
       <motion.div
-        className="absolute right-4 top-1/2 -translate-y-1/2"
+        className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2"
         aria-hidden
         animate={{ y: [0, -8, 0, 8, 0], rotate: [-2, 1, -1, 2, -2] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -161,7 +161,7 @@ const SpaceHero = () => {
       {/* RIGHT-SIDE SPACE CLUSTER */}
       {/* Nebula glow */}
       <motion.div
-        className="absolute right-0 top-10 w-56 h-56 rounded-full blur-3xl pointer-events-none"
+        className="absolute right-0 top-10 w-40 h-40 md:w-56 md:h-56 rounded-full blur-3xl pointer-events-none"
         aria-hidden
         style={{
           background:
@@ -173,7 +173,7 @@ const SpaceHero = () => {
 
       {/* Mini satellite */}
       <motion.div
-        className="absolute right-24 top-20"
+        className="absolute right-24 top-20 scale-90 md:scale-100"
         aria-hidden
         animate={{ y: [0, -6, 0, 6, 0], rotate: [0, 2, -1, 2, 0] }}
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
@@ -192,12 +192,22 @@ const SpaceHero = () => {
         </svg>
       </motion.div>
 
-      {/* UFO hover */}
+      {/* UFO fly-around */}
       <motion.div
-        className="absolute left-50 bottom-10"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none scale-75 sm:scale-90 md:scale-100"
         aria-hidden
-        animate={{ y: [0, -4, 0, 4, 0], rotate: [-1, 1, -1, 1, -1] }}
-        transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
+        animate={{
+          x: [-180, 160, 100, -140, -180],
+          y: [-80, -60, 120, 100, -80],
+          rotate: [-10, 5, -5, 10, -10],
+          scale: [1, 1.03, 1, 1.04, 1],
+        }}
+        transition={{
+          duration: 24,
+          repeat: Infinity,
+          ease: "linear",
+          times: [0, 0.25, 0.5, 0.75, 1],
+        }}
       >
         <svg width="80" height="48" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <ellipse cx="40" cy="20" rx="28" ry="10" fill="#94a3b8" opacity="0.8"/>
@@ -216,7 +226,7 @@ const SpaceHero = () => {
 
       {/* Asteroid cluster */}
       <motion.div
-        className="absolute right-16 top-1/3"
+        className="hidden sm:block absolute right-16 top-1/3"
         aria-hidden
         animate={{ x: [0, -6, 0, 6, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
@@ -266,7 +276,7 @@ const About = () => {
       {/* Top-left blob */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-60"
+        className="hidden sm:block pointer-events-none absolute -top-40 -left-40 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-60"
         animate={{ x: [0, 30, -20, 0], y: [0, -20, 15, 0], scale: [1, 1.05, 0.98, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         style={{
@@ -277,7 +287,7 @@ const About = () => {
       {/* Top-right blob (your snippet) */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-20 -right-20 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-60"
+        className="hidden sm:block pointer-events-none absolute -top-20 -right-20 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-60"
         animate={{ x: [0, -30, 10, 0], y: [0, 20, -10, 0], scale: [1, 1.05, 0.98, 1] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
         style={{
@@ -288,7 +298,7 @@ const About = () => {
       {/* Bottom-right blob */}
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute -top-50 -right-40 w-[38rem] h-[38rem] rounded-full blur-3xl opacity-60"
+        className="hidden sm:block pointer-events-none absolute -top-50 -right-40 w-[38rem] h-[38rem] rounded-full blur-3xl opacity-60"
         animate={{ x: [0, -20, 10, 0], y: [0, 20, -10, 0], scale: [1, 1.07, 0.95, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
         style={{
@@ -300,7 +310,7 @@ const About = () => {
       {/* Content */}
       <motion.div
         ref={sectionRef}
-        className="container mx-auto px-6 py-20 flex flex-col items-center w-full relative z-10"
+        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex flex-col items-center w-full relative z-10"
         variants={container}
         initial="hidden"
         whileInView="show"
@@ -309,7 +319,7 @@ const About = () => {
       >
         {/* Hero row (MultipleText + Space animation) with parallax */}
         <motion.div
-          className="w-full h-screen mb-12 grid grid-cols-1 lg:grid-cols-2 items-center gap-8"
+          className="w-full min-h-[70vh] lg:h-screen mb-8 sm:mb-12 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 sm:gap-8"
           variants={fadeUp}
           style={{ y: heroY, opacity: heroOpacity }}
         >

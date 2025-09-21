@@ -26,6 +26,14 @@ const skills = [
   { name: "MongoDB", logo: "/mongodb.png", level: 67 },
 ];
 
+const stars = Array.from({ length: 60 }, () => ({
+  top: `${Math.random() * 100}%`,
+  left: `${Math.random() * 100}%`,
+  size: `${Math.random() * 2 + 1}px`,
+  duration: Math.random() * 4 + 2,
+  delay: Math.random() * 6,
+}));
+
 const container = {
   hidden: { opacity: 0 },
   show: {
@@ -215,13 +223,45 @@ const Skills = () => {
   const underlineScale = useTransform(smooth, [0, 1], [0.4, 1]);
 
   return (
-    <section id="skills" className="relative bg-black pt-40 pb-40 overflow-hidden">
+    <section id="skills" className="relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0f] to-black pt-40 pb-40">
+      {/* twinkling starfield */}
+      {stars.map((s, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            opacity: 0.8,
+          }}
+          animate={{ opacity: [0.2, 0.9, 0.2], scale: [1, 1.25, 1] }}
+          transition={{
+            duration: s.duration,
+            delay: s.delay,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          }}
+        />
+      ))}
       {/* Ambient animated blob */}
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -right-20 w-[22rem] h-[22rem] rounded-full blur-3xl"
         animate={{ x: [0, -30, 10, 0], y: [0, 20, -10, 0], scale: [1, 1.05, 0.98, 1] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -left-24 -top-12 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-60"
+        animate={{ x: [0, 25, -15, 0], y: [0, -20, 10, 0], scale: [1, 1.05, 0.98, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
         style={{
           background:
             "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
