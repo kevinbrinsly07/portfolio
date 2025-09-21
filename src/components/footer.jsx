@@ -1,44 +1,112 @@
 import React from "react";
+// eslint-disable-next-line no-unused-vars
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { y: 20, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "spring", stiffness: 280, damping: 24 },
+  },
+};
 
 const Footer = () => {
   return (
-    <footer className="bg-black text-white py-6 px-4 font-mono w-full">
-      <div className="mx-auto flex justify-between items-end p-6">
-        {/* Logo and Copyright - Left Side */}
-        <div className="text-left">
+    <footer
+      className="relative bg-gradient-to-b from-black via-[#0a0a0f] to-black text-white py-10 px-4 font-mono overflow-hidden"
+    >
+      {/* Ambient blobs */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 -left-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-40"
+        animate={{ x: [0, 20, -15, 0], y: [0, -15, 10, 0], scale: [1, 1.05, 0.95, 1] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 -right-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-40"
+        animate={{ x: [0, -20, 15, 0], y: [0, 15, -10, 0], scale: [1, 1.07, 0.95, 1] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(255,104,240,0.18), rgba(23,172,255,0.12), transparent)",
+        }}
+      />
+
+      {/* Content */}
+      <div className="relative mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-end p-6 z-10">
+        {/* Left Side */}
+        <motion.div
+          className="text-left mb-6 sm:mb-0"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <h2 className="text-2xl font-semibold">BRINSLY</h2>
           <p className="text-sm">&copy; 2025 BRINSLY | All Rights Reserved</p>
-        </div>
+        </motion.div>
 
-        {/* Right Side - Quick Links & Contact Info */}
-        <div className="flex flex-col sm:flex-col gap-12 text-right">
-          
+        {/* Right Side */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-12 text-left sm:text-right"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-medium">Quick Links</h3>
+            <h3 className="text-lg font-medium mb-2">Quick Links</h3>
             <ul className="text-sm space-y-2">
-              <li><a href="/" className="hover:underline">Home</a></li>
-              <li><a href="/about" className="hover:underline">About</a></li>
-              <li><a href="/services" className="hover:underline">Services</a></li>
-              <li><a href="/contact" className="hover:underline">Contact</a></li>
+              <li>
+                <a href="/" className="hover:text-[#17acff] transition-colors">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="/about" className="hover:text-[#17acff] transition-colors">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="/services" className="hover:text-[#17acff] transition-colors">
+                  Services
+                </a>
+              </li>
+              <li>
+                <a href="/contact" className="hover:text-[#17acff] transition-colors">
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Contact Information */}
           <div>
-            <h3 className="text-lg font-medium">Contact Us</h3>
+            <h3 className="text-lg font-medium mb-2">Contact Us</h3>
             <p className="text-sm">Email: brinslykevin@gmail.com</p>
             <p className="text-sm">Phone: +94 72 081 5252</p>
             <p className="text-sm">Address: Marawila, Sri Lanka</p>
           </div>
-
-        </div>
+        </motion.div>
       </div>
 
       {/* Bottom Line */}
-      <div className="border-t border-gray-700 mt-6 pt-4 text-center text-xs">
-        <p>Designed & Developed by kevin brinsly</p>
-      </div>
+      <motion.div
+        className="mt-6 pt-4 text-center text-xs relative z-10"
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <p>Designed & Developed by Kevin Brinsly</p>
+      </motion.div>
     </footer>
   );
 };

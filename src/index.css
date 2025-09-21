@@ -1,11 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
 @import "tailwindcss";
 
-body, html {
+body,
+html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   background-color: black;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .bottom-gradient-border {
@@ -17,7 +26,8 @@ body, html {
 
 .gradient-border {
   border: 4px solid;
-  border-radius: 9999px; /* Ensures the border is round */
+  border-radius: 9999px;
+  /* Ensures the border is round */
   border-image: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
   border-image-slice: 1;
 }
@@ -31,6 +41,7 @@ body, html {
   0% {
     transform: translateX(100%);
   }
+
   100% {
     transform: translateX(-100%);
   }
@@ -38,42 +49,99 @@ body, html {
 
 .animate-marquee {
   display: inline-block;
-  animation: marquee 10s linear infinite; /* Loop the animation */
-  white-space: nowrap; /* Prevents the text from wrapping */
-  padding-left: 100%; /* Start from the right end */
-  line-height: 100px; /* Center text vertically */
-  font-size: 24px; /* Adjust text size as needed */
+  animation: marquee 10s linear infinite;
+  /* Loop the animation */
+  white-space: nowrap;
+  /* Prevents the text from wrapping */
+  padding-left: 100%;
+  /* Start from the right end */
+  line-height: 100px;
+  /* Center text vertically */
+  font-size: 24px;
+  /* Adjust text size as needed */
 }
 
 
 
 /* Keyframes for bouncing effect */
 @keyframes bounceTech {
-  0%, 100% {
-    transform: translateY(0); /* Start and end at original position */
-  }
-  30% {
-    transform: translateY(-10px); /* Move up */
-  }
-  50% {
-    transform: translateY(0); /* Return to original position */
-  }
-  70% {
-    transform: translateY(-5px); /* Slight move up */
-  }
+
+  0%,
   100% {
-    transform: translateY(0); /* Final position */
+    transform: translateY(0);
+    /* Start and end at original position */
+  }
+
+  30% {
+    transform: translateY(-10px);
+    /* Move up */
+  }
+
+  50% {
+    transform: translateY(0);
+    /* Return to original position */
+  }
+
+  70% {
+    transform: translateY(-5px);
+    /* Slight move up */
+  }
+
+  100% {
+    transform: translateY(0);
+    /* Final position */
   }
 }
 
 /* Apply bounce animation to the tech items */
 .tech-item {
-  animation: bounceTech 3.5s ease-in-out infinite; /* Infinite bounce */
+  animation: bounceTech 3.5s ease-in-out infinite;
+  /* Infinite bounce */
 }
 
 /* Hover effect: Disable bounce on hover and apply scale */
 .tech-item:hover {
-  animation: none; /* Stop bouncing on hover */
+  animation: none;
+  /* Stop bouncing on hover */
   transform: scale(1.1);
   border-color: #17acff;
+}
+
+
+/* ===== Global Custom Scrollbar ===== */
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  /* "auto" | "thin" | "none" */
+  scrollbar-color: #17acff #0a0a0f;
+  /* thumb | track */
+}
+
+/* WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;
+  /* vertical scrollbar width */
+  height: 10px;
+  /* horizontal scrollbar height */
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0f;
+  /* track color (matches site bg) */
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #17acff, #ff68f0);
+  border-radius: 9999px;
+  /* fully rounded */
+  border: 2px solid rgba(0, 0, 0, 0.25);
+  /* subtle inset border for contrast */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #36c3ff, #ffa1f7);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
 }

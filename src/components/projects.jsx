@@ -1,120 +1,410 @@
-import React from "react";
-
-const project1 = "/projectsPic/realestate.jpeg"; 
-
-
+import React, { useRef, useMemo, useEffect } from "react";
 import { LinearGradient } from "react-text-gradients";
+import {
+  // eslint-disable-next-line no-unused-vars
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  motionValue,
+} from "framer-motion";
 
-const techStacks = {
-  React: "/react.png",
-  ReactNative: "/reactnative.png",
-  firebase: "/firebase.png",
-  ExpressJS: "/express.png",
-  Flask: "/flask.png",
-  Python: "/python.png",
-  Tailwind: "/tailwind.png",
-  HTML: "/html.png",
-  CSS: "/css.png",
-  JavaScript: "/javascript.png",
-  PHP: "/php.png",
-  MongoDB: "/mongodb.png",
+// --- Mini GitHub Repo helpers ---
+const langFromTech = (stack = []) => {
+  if (!stack || !stack.length) return { label: "Other", color: "#8b8b8b" };
+  const t = stack[0].toLowerCase();
+  if (t.includes("typescript")) return { label: "TypeScript", color: "#3178c6" };
+  if (t.includes("javascript") || t.includes("react") || t.includes("express")) return { label: "JavaScript", color: "#f1e05a" };
+  if (t.includes("python") || t.includes("flask") || t.includes("fastapi")) return { label: "Python", color: "#3572A5" };
+  if (t.includes("php")) return { label: "PHP", color: "#4F5D95" };
+  if (t.includes("java")) return { label: "Java", color: "#b07219" };
+  if (t.includes("css") || t.includes("tailwind")) return { label: "CSS", color: "#563d7c" };
+  if (t.includes("html")) return { label: "HTML", color: "#e34c26" };
+  if (t.includes("mongodb")) return { label: "MongoDB", color: "#13aa52" };
+  if (t.includes("sqlite")) return { label: "SQLite", color: "#0f80cc" };
+  return { label: stack[0], color: "#8b8b8b" };
 };
+
+const parseRepoFromUrl = (url = "") => {
+  try {
+    const u = new URL(url);
+    const parts = u.pathname.split("/").filter(Boolean);
+    if (parts.length >= 2) return `${parts[0]}/${parts[1]}`;
+  } catch { /* empty */ }
+  return "repo";
+};
+
+function MiniRepoCard({ p }) {
+  const { label, color } = langFromTech(p.techStack);
+  const repo = parseRepoFromUrl(p.githubLink);
+
+  return (
+    <motion.a
+      href={p.githubLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="group relative block rounded-2xl border border-white/10 bg-[#0b0f17]/70 backdrop-blur-xl overflow-hidden"
+      whileHover={{ y: -4, scale: 1.01 }}
+      whileTap={{ scale: 0.99 }}
+      transition={{ type: "spring", stiffness: 300, damping: 22 }}
+    >
+      {/* top accent bar */}
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#17acff] via-[#7ec8ff] to-[#ff68f0] opacity-80" />
+
+      {/* header: repo path + public pill */}
+      <div className="px-5 pt-5 pb-2 flex items-center justify-between">
+        <div className="flex items-center gap-2 text-white/90">
+          {/* repo icon */}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="opacity-80">
+            <path d="M7 3h10a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.76.43L12 16l-6.24 2.93A.5.5 0 0 1 5 18.5V5a2 2 0 0 1 2-2z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+          </svg>
+          <span className="font-mono text-lg group-hover:text-white">{repo}</span>
+        </div>
+        <span className="text-[10px] uppercase tracking-wider text-white/70 border border-white/15 rounded-full px-2 py-0.5">Public</span>
+      </div>
+
+      {/* description */}
+      <p className="px-5 text-white/75 leading-relaxed">
+        {p.description}
+      </p>
+
+      {/* footer: language dot, techs, action */}
+      <div className="px-5 pb-5 pt-4 flex items-center justify-between">
+        <div className="flex items-center gap-3">
+          <span className="inline-flex items-center gap-1 text-sm text-white/80">
+            <span className="inline-block w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
+            {label}
+          </span>
+          {/* condensed tech pill row */}
+          <div className="hidden sm:flex flex-wrap gap-1 max-w-[280px]">
+            {p.techStack.slice(0, 3).map((t, idx) => (
+              <span key={t + idx} className="text-[11px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-white/80">
+                {t}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 text-white/80">
+          {/* star icon */}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-80">
+            <path d="M12 3l2.7 5.47 6.05.88-4.38 4.27 1.03 6.01L12 16.9l-5.4 2.73 1.03-6.01L3.25 9.35l6.05-.88L12 3z" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/>
+          </svg>
+          {/* fork icon */}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="opacity-80">
+            <path d="M7 5a2 2 0 1 1 0 4h0a2 2 0 1 1 0-4Zm10 10a2 2 0 1 1 0 4h0a2 2 0 1 1 0-4Z" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+            <path d="M7 9v2a5 5 0 0 0 5 5h5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round"/>
+          </svg>
+          <span className="text-sm text-[#9bdcff] group-hover:text-[#17acff]">Open ↗</span>
+        </div>
+      </div>
+    </motion.a>
+  );
+}
 
 const projects = [
   {
     name: "Cinemax",
-    image: project1,
     description:
       "Developed a movie streaming app frontend using React Native, implementing movie detail pages and a responsive design for iOS and Android platforms, ensuring a seamless user experience.",
     techStack: ["ReactNative", "firebase"],
-    githubLink: "https://github.com/kevinbrinsly07/Solo-Initiative-Cinemax", 
+    githubLink: "https://github.com/kevinbrinsly07/Solo-Initiative-Cinemax",
   },
   {
     name: "SinNews",
-    image: project1,
     description:
       "Developed a Sinhala news summarizer using React for the frontend and Flask for the backend. Fine-tuned the mT5 model on a custom dataset for Sinhala news summarization and integrated it into the system. Utilized Python for data processing, implemented a responsive UI with Tailwind CSS, and ensured secure handling of news articles.",
     techStack: ["Python", "Flask", "React", "Tailwind"],
-    githubLink: "https://github.com/yourusername/sinnews", 
+    githubLink: "https://github.com/kevinbrinsly07/siNews",
   },
   {
     name: "Hometeq",
-    image: project1,
     description:
       "Hometeq is a web application built using PHP, MySQL, HTML, and CSS, designed to manage e-commerce functionalities. The backend, powered by PHP, handles user authentication, session management, and database interactions, while MySQL stores product details, user accounts, and orders.",
     techStack: ["PHP", "HTML", "CSS"],
-    githubLink: "https://github.com/kevinbrinsly07/Hometeq", 
+    githubLink: "https://github.com/kevinbrinsly07/Hometeq",
   },
   {
-    name: "ToDoApp",
-    image: project1,
+    name: "VehicleRentalSystem - admin",
     description:
-      "This Express.js web application provides a simple implementation of CRUD (Create, Read, Update, Delete) operations using MongoDB as the database. It allows users to add new records, retrieve stored data, update existing entries, and delete records seamlessly. The application is built with Node.js and Express.js, utilizing Mongoose for database interactions. It follows a RESTful API structure, making it easy to integrate with frontend applications or other services.",
-    techStack: ["ExpressJS", "MongoDB"],
-    githubLink: "https://github.com/kevinbrinsly07/ToDoApp", 
+      "The Vehicle Rental System Admin is a web-based application designed to manage the operations of a vehicle rental service. It provides administrators with tools to oversee vehicle inventory, customer bookings, payments, and user management.",
+    techStack: ["Python", "FastAPI", "SQLite", "React", "Tailwindcss"],
+    githubLink: "https://github.com/kevinbrinsly07/VehicleRentalSystem_admin",
   },
   {
-    name: "TicTacToeGame",
-    image: project1,
+    name: "pos-system",
     description:
-      "This Vanilla JavaScript code implements a simple two-player Tic-Tac-Toe game. Players take turns clicking buttons to mark “X” or “O”. The game checks for a winner after each move, disables the board upon a win, or shows a draw message if no winner is found. A reset function allows restarting the game with an empty board.",
-    techStack: ["JavaScript", "HTML", "CSS"],
-    githubLink: "https://github.com/kevinbrinsly07/TicTacToeGame", 
+      "A Point of Sale (POS) system is an all-in-one solution that allows businesses to efficiently manage sales, track inventory, process payments, and monitor customer activity in real time, providing features such as product and stock management with low-stock alerts, flexible payment options including cash, card, and discounts, detailed sales reports",
+    techStack: ["PHP", "Laravel", "SQLite", "JavaScript", "React", "HTML", "CSS", "Tailwindcss"],
+    githubLink: "https://github.com/kevinbrinsly07/pos-system",
   },
   {
     name: "LoginApplication",
-    image: project1,
     description:
-      "This project is a Express.js web application with a session-based login system using EJS templating. It handles user authentication, session management, and routing efficiently.",
+      "Express.js app with session-based login, EJS templating, and clean routing.",
     techStack: ["ExpressJS"],
     githubLink: "https://github.com/kevinbrinsly07/LoginApplication",
   },
 ];
 
+
+
+const stars = Array.from({ length: 60 }, () => ({
+  top: `${Math.random() * 100}%`,
+  left: `${Math.random() * 100}%`,
+  size: `${Math.random() * 2 + 1}px`,
+  duration: Math.random() * 4 + 2,
+  delay: Math.random() * 6,
+}));
+
 const Projects = () => {
+  const sectionRef = useRef(null);
+  const fieldRef = useRef(null);
+
+  const CARD_W = 320; // px
+  const cardEls = useRef([]);
+  const heightsRef = useRef(projects.map(() => 240));
+
+  // stable random positions/seeds for floating field
+
+  // positions (MotionValues) and velocities for simple physics
+  const bodies = useMemo(
+    () => projects.map(() => ({ x: motionValue(0), y: motionValue(0) })),
+    [projects.length]
+  );
+  const velsRef = useRef(projects.map(() => ({ vx: (Math.random()*2-1)*60, vy: (Math.random()*2-1)*60 })));
+  const draggingRef = useRef(projects.map(() => false));
+
+  // Initialize positions once based on the field size (with a fallback before mount)
+  useEffect(() => {
+    const el = fieldRef.current;
+    const fw = el ? el.clientWidth : 900;
+    const fh = el ? el.clientHeight : 700;
+    bodies.forEach((b, i) => {
+      const h = heightsRef.current[i] || 240;
+      const x = Math.random() * Math.max(1, fw - CARD_W);
+      const y = Math.random() * Math.max(1, fh - h);
+      b.x.set(x);
+      b.y.set(y);
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    const observers = [];
+    cardEls.current.forEach((el, i) => {
+      if (!el) return;
+      const ro = new ResizeObserver((entries) => {
+        for (const entry of entries) {
+          heightsRef.current[i] = entry.contentRect.height;
+        }
+      });
+      ro.observe(el);
+      observers.push(ro);
+    });
+    return () => observers.forEach((o) => o.disconnect());
+  }, [projects.length]);
+
+  // Physics animation loop
+  useEffect(() => {
+    let raf;
+    let last = performance.now();
+    const step = (now) => {
+      const el = fieldRef.current;
+      if (!el) { raf = requestAnimationFrame(step); return; }
+      const fw = el.clientWidth;
+      const fh = el.clientHeight;
+      const dt = Math.min(0.032, (now - last) / 1000); // cap dt at ~30ms
+      last = now;
+
+      // integrate and wall bounce
+      bodies.forEach((b, i) => {
+        if (draggingRef.current[i]) return; // skip dragging bodies
+        const v = velsRef.current[i];
+        const h = heightsRef.current[i] || 240;
+        let x = b.x.get() + v.vx * dt;
+        let y = b.y.get() + v.vy * dt;
+        // walls
+        if (x <= 0) { x = 0; v.vx = Math.abs(v.vx); }
+        if (x + CARD_W >= fw) { x = fw - CARD_W; v.vx = -Math.abs(v.vx); }
+        if (y <= 0) { y = 0; v.vy = Math.abs(v.vy); }
+        if (y + h >= fh) { y = fh - h; v.vy = -Math.abs(v.vy); }
+        b.x.set(x);
+        b.y.set(y);
+      });
+
+      // pairwise collisions (AABB) with simple separation + velocity swap along minimum overlap axis
+      for (let i = 0; i < bodies.length; i++) {
+        for (let j = i + 1; j < bodies.length; j++) {
+          if (draggingRef.current[i] || draggingRef.current[j]) continue;
+          const bi = bodies[i], bj = bodies[j];
+          const xi = bi.x.get(), yi = bi.y.get();
+          const xj = bj.x.get(), yj = bj.y.get();
+          const hi = heightsRef.current[i] || 240;
+          const hj = heightsRef.current[j] || 240;
+          if (xi < xj + CARD_W && xi + CARD_W > xj && yi < yj + hj && yi + hi > yj) {
+            const overlapX = Math.min(xi + CARD_W - xj, xj + CARD_W - xi);
+            const overlapY = Math.min(yi + hi - yj, yj + hj - yi);
+            const vi = velsRef.current[i];
+            const vj = velsRef.current[j];
+            if (overlapX < overlapY) {
+              // separate along X
+              if (xi < xj) { bi.x.set(xi - overlapX/2); bj.x.set(xj + overlapX/2); }
+              else { bi.x.set(xi + overlapX/2); bj.x.set(xj - overlapX/2); }
+              // swap vx with slight restitution
+              const tmp = vi.vx; vi.vx = vj.vx * 0.95; vj.vx = tmp * 0.95;
+            } else {
+              // separate along Y
+              if (yi < yj) { bi.y.set(yi - overlapY/2); bj.y.set(yj + overlapY/2); }
+              else { bi.y.set(yi + overlapY/2); bj.y.set(yj - overlapY/2); }
+              // swap vy
+              const tmp = vi.vy; vi.vy = vj.vy * 0.95; vj.vy = tmp * 0.95;
+            }
+          }
+        }
+      }
+
+      raf = requestAnimationFrame(step);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [bodies, fieldRef]);
+
+  // Scroll progress for heading underline & subtle parallax
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start 70%", "end 20%"],
+  });
+  const smooth = useSpring(scrollYProgress, {
+    stiffness: 120,
+    damping: 24,
+    mass: 0.35,
+  });
+  const headY = useTransform(smooth, [0, 1], [10, -20]);
+  const underlineScale = useTransform(smooth, [0, 1], [0.4, 1]);
+
   return (
-    <section id="projects" className="bg-black py-30">
-      <div className="container mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold text-white mb-20 font-mono">
+    <section
+      id="projects"
+      className="relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0f] to-black py-24"
+    >
+      {/* twinkling starfield */}
+      {stars.map((s, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+            opacity: 0.8,
+          }}
+          animate={{ opacity: [0.2, 0.9, 0.2], scale: [1, 1.25, 1] }}
+          transition={{
+            duration: s.duration,
+            delay: s.delay,
+            repeat: Infinity,
+            repeatType: "mirror",
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
+      {/* ambient animated blobs */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -top-8 -left-24 w-[42rem] h-[42rem] rounded-full blur-3xl opacity-60"
+        animate={{
+          x: [0, 25, -15, 0],
+          y: [0, -20, 10, 0],
+          scale: [1, 1.05, 0.98, 1],
+        }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
+        }}
+      />
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute -bottom-24 -right-24 w-[40rem] h-[40rem] rounded-full blur-3xl opacity-60"
+        animate={{
+          x: [0, -20, 10, 0],
+          y: [0, 18, -8, 0],
+          scale: [1, 1.07, 0.95, 1],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(closest-side, rgba(255,104,240,0.18), rgba(23,172,255,0.12), transparent)",
+        }}
+      />
+
+      <div
+        ref={sectionRef}
+        className="container mx-auto px-6 text-center relative z-10"
+      >
+        {/* heading */}
+        <motion.h2
+          className="text-4xl font-bold text-white mb-10 font-mono inline-block"
+          style={{ y: headY }}
+          initial={{ opacity: 0, y: 14 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ type: "spring", stiffness: 300, damping: 24 }}
+        >
           <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
             Projects
           </LinearGradient>
-        </h2>
-        <div className="cursor-pointer grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-12">
-          {projects.map((project, index) => (
-            <a
-              key={index}
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-8 rounded-lg shadow-md border-2 border-gray-700 hover:border-[#17acff] hover:scale-105 transition duration-300 ease-in-out"
-            >
-              <img
-                src={project.image}
-                alt={project.name}
-                className="w-full h-64 object-cover rounded-lg mb-4"
+          <motion.span
+            aria-hidden
+            className="block h-[3px] mt-3 origin-left bg-gradient-to-r from-[#17acff] to-[#ff68f0] rounded-full"
+            style={{ scaleX: underlineScale }}
+          />
+        </motion.h2>
+
+        {/* orbital float field */}
+        <div ref={fieldRef} className="relative mt-10 h-[720px] sm:h-[760px] md:h-[820px]">
+          {/* subtle space dust */}
+          <div className="absolute inset-0 pointer-events-none" aria-hidden>
+            {Array.from({ length: 40 }).map((_, i) => (
+              <motion.span
+                key={`dust-${i}`}
+                className="absolute w-1 h-1 rounded-full bg-white/30"
+                style={{
+                  left: `${(i * 37) % 100}%`,
+                  top: `${(i * 53) % 100}%`,
+                  opacity: 0.4,
+                }}
+                animate={{ opacity: [0.15, 0.6, 0.15] }}
+                transition={{ duration: 4 + (i % 5), repeat: Infinity, ease: "easeInOut", delay: (i % 7) * 0.2 }}
               />
-              <h3 className="text-xl font-semibold text-white font-mono">
-                {project.name}
-              </h3>
-              <p className="text-gray-600 mt-2">{project.description}</p>
-              {/* Tech Stack */}
-              <div className="flex flex-wrap justify-center mt-4">
-                {project.techStack.map((tech, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center space-x-2 bg-[#222831] px-3 py-1 rounded-lg m-1"
-                  >
-                    <img
-                      src={techStacks[tech]}
-                      alt={tech}
-                      className="w-6 h-6"
-                    />
-                    <span className="text-white text-sm">{tech}</span>
-                  </div>
-                ))}
+            ))}
+          </div>
+
+          {projects.map((p, i) => (
+            <motion.div
+              key={`float-${p.name}`}
+              className="absolute cursor-grab active:cursor-grabbing select-none"
+              style={{ width: CARD_W, x: bodies[i].x, y: bodies[i].y }}
+              drag
+              dragConstraints={fieldRef}
+              dragElastic={0.12}
+              dragMomentum={true}
+              onDragStart={() => { draggingRef.current[i] = true; velsRef.current[i].vx = 0; velsRef.current[i].vy = 0; }}
+              onDragEnd={(_e, info) => {
+                draggingRef.current[i] = false;
+                // Framer velocity is px/s; damp a bit
+                velsRef.current[i].vx = (info.velocity.x || 0) * 0.02;
+                velsRef.current[i].vy = (info.velocity.y || 0) * 0.02;
+              }}
+              whileHover={{ scale: 1.03 }}
+            >
+              <div ref={(el) => (cardEls.current[i] = el)} className="w-full">
+                <MiniRepoCard p={p} i={i} />
               </div>
-            </a>
+            </motion.div>
           ))}
         </div>
       </div>
