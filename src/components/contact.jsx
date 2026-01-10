@@ -28,7 +28,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative bg-gradient-to-b from-black via-[#070a12] to-black py-[280px] text-center overflow-hidden"
+      className="relative bg-gradient-to-b from-black via-[#070a12] to-black py-24 sm:py-32 lg:py-40 text-center overflow-hidden"
     >
       {/* Starfield */}
       {Array.from({ length: 70 }).map((_, i) => (

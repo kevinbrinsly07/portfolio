@@ -70,15 +70,25 @@ const Navbar = () => {
   const boxShadow = useTransform(
     scrollY,
     [0, 120],
-    ["0 6px 24px rgba(0,0,0,0.15)", "0 6px 24px rgba(0,0,0,0.35)"]
+    ["0 0 0 rgba(0,0,0,0)", "0 6px 24px rgba(0,0,0,0.35)"]
   );
 
   const [showMiniNav, setShowMiniNav] = useState(false);
+  const [isHidden, setIsHidden] = useState(false);
+  const lastScrollYRef = useRef(0);
+  const [currentY, setCurrentY] = useState(0);
 
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY || document.documentElement.scrollTop;
       setShowMiniNav(y > 240);
+      setCurrentY(y);
+      if (y < lastScrollYRef.current && y > 0) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+      lastScrollYRef.current = y;
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -99,7 +109,11 @@ const Navbar = () => {
       <motion.header
         ref={headerRef}
         initial={{ y: -24, opacity: 0 }}
-        animate={{ y: 0, opacity: 1, transition: { type: "spring", stiffness: 300, damping: 24 } }}
+        animate={{ 
+          y: isHidden ? -100 : 0, 
+          opacity: isHidden ? 0 : 1, 
+          transition: { type: "spring", stiffness: 300, damping: 24 } 
+        }}
         style={{ boxShadow }}
         className="fixed w-full z-30"
       >
@@ -128,7 +142,7 @@ const Navbar = () => {
         />
 
         {/* Content */}
-        <nav className="relative text-white font-[600] poppins cursor-pointer w-full px-6 sm:px-8 py-4 flex justify-between items-center">
+        <nav className={`relative text-white font-[600] poppins cursor-pointer w-full px-6 sm:px-8 py-4 flex justify-between items-center ${!isHidden && currentY > 0 ? 'bg-black/80 backdrop-blur-md' : ''}`}>
           {/* Logo */}
           <motion.h1
             whileHover={{ scale: 1.03 }}

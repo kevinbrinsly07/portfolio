@@ -271,7 +271,7 @@ const Skills = () => {
       <div ref={sectionRef} className="cursor-pointer container mx-auto px-6 text-center relative z-10">
         {/* Heading */}
         <motion.h2
-          className="text-4xl font-bold mb-8 text-white font-mono inline-block"
+          className="text-3xl sm:text-4xl font-bold mb-8 text-white font-mono inline-block"
           style={{ y: headY }}
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
