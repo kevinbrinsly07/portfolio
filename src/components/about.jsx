@@ -79,7 +79,7 @@ const About = () => {
       {/* Content */}
       <motion.div
         ref={sectionRef}
-        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex flex-col items-center w-full relative z-10"
+        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex flex-col items-center w-full relative z-10 scroll-container"
         variants={container}
         initial="hidden"
         whileInView="show"

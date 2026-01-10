@@ -260,7 +260,7 @@ const Skills = () => {
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      <div ref={sectionRef} className="cursor-pointer container mx-auto px-6 text-center relative z-10">
+      <div ref={sectionRef} className="cursor-pointer container mx-auto px-6 text-center relative z-10 scroll-container">
         {/* Heading */}
         <motion.h2
           className="text-3xl sm:text-4xl font-bold mb-8 text-white font-mono inline-block"

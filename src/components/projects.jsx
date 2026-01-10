@@ -345,7 +345,7 @@ const Projects = () => {
 
       <div
         ref={sectionRef}
-        className="container mx-auto px-4 sm:px-6 text-center relative z-10"
+        className="container mx-auto px-4 sm:px-6 text-center relative z-10 scroll-container"
       >
         {/* heading */}
         <motion.h2

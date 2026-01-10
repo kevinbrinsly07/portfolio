@@ -21,7 +21,13 @@ html {
   box-sizing: border-box;
   background-color: black;
   overflow-x: hidden;
+  position: relative;
   /* scroll-behavior: smooth; */
+}
+
+/* Force relative positioning for scroll containers */
+.scroll-container {
+  position: relative !important;
 }
 
 .bottom-gradient-border {

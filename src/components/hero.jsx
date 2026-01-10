@@ -490,11 +490,11 @@ const Hero = () => {
       {/* Content */}
       <motion.div
         ref={sectionRef}
-        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex flex-col items-center w-full relative z-10"
+        className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-20 flex flex-col items-center w-full relative z-10 scroll-container"
       >
         {/* Hero row (MultipleText + Space animation) with parallax */}
         <motion.div
-          className="w-full min-h-screen lg:h-screen mb-8 sm:mb-12 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 sm:gap-8"
+          className="w-full max-w-[1200px] min-h-screen lg:h-screen mb-8 sm:mb-12 grid grid-cols-1 lg:grid-cols-2 items-center gap-6 sm:gap-8"
           style={{ y: heroY, opacity: heroOpacity }}
         >
           <motion.div className="flex-1">

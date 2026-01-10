@@ -95,7 +95,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const sections = ["About", "Skills", "Projects", "Contact"];
+  const sections = ["About", "Experience", "Education", "Skills", "Projects", "Contact"];
 
   return (
     <>
@@ -142,7 +142,16 @@ const Navbar = () => {
         />
 
         {/* Content */}
-        <nav className={`relative text-white font-[600] poppins cursor-pointer w-full px-6 sm:px-8 py-4 flex justify-between items-center ${!isHidden && currentY > 0 ? 'bg-black/80 backdrop-blur-md' : ''}`}>
+        <motion.nav 
+          className="relative text-white font-[600] poppins cursor-pointer w-full px-6 sm:px-8 py-4 flex justify-between items-center backdrop-blur-md"
+          style={{
+            backgroundColor: (!isHidden && currentY > 0) ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0)"
+          }}
+          animate={{
+            backgroundColor: (!isHidden && currentY > 0) ? "rgba(0, 0, 0, 0.8)" : "rgba(0, 0, 0, 0)"
+          }}
+          transition={{ duration: 0.3 }}
+        >
           {/* Logo */}
           <motion.h1
             whileHover={{ scale: 1.03 }}
@@ -227,14 +236,18 @@ const Navbar = () => {
               </motion.svg>
             </motion.button>
           </div>
-        </nav>
+        </motion.nav>
 
         {/* Mobile Menu Dropdown */}
         <AnimatePresence>
           {isMobileMenuOpen && (
             <motion.div
               key="mobile-drawer"
-              className="sm:hidden text-white px-6 pb-6 backdrop-blur-md bg-black/70 border-t border-white/10"
+              className="sm:hidden text-white px-6 pb-6 backdrop-blur-md border-t"
+              style={{
+                backgroundColor: "rgba(0, 0, 0, 0.7)",
+                borderColor: "rgba(255, 255, 255, 0.1)"
+              }}
               variants={drawerVariants}
               initial="hidden"
               animate="show"
