@@ -29,7 +29,7 @@ const MultipleText = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8 poppins lg:mt-0 mt-20 sm:mt-32">
       <h4 className="text-white text-lg sm:text-xl md:text-2xl mb-2 font-semibold font-mono">Hello, It's Me</h4>
-      <h1 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-[800] mb-4 leading-tight">
+      <h1 className="text-white text-3xl/[80%] sm:text-5xl/[80%] md:text-6xl/[80%] lg:text-7xl/[80%] xl:text-8xl/[80%] font-[800] mb-4 leading-tight">
         <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
           KEVIN <br/> BRINSLY
         </LinearGradient>

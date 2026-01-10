@@ -195,6 +195,51 @@ const SpaceHero = () => {
           transition={{ duration: 2.4, repeat: Infinity, delay: 0.8 }}
         />
       </div>
+
+      {/* Comet passing by */}
+      <motion.div
+        className="absolute right-4 top-1/4 pointer-events-none"
+        aria-hidden
+        animate={{
+          x: [100, -150],
+          y: [0, 20, -10, 0],
+        }}
+        transition={{
+          duration: 15,
+          repeat: Infinity,
+          ease: "linear",
+          delay: 5,
+        }}
+      >
+        <div className="relative">
+          <div className="w-1 h-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
+          <div className="absolute top-0 left-2 w-8 h-0.5 bg-gradient-to-r from-white/60 to-transparent" />
+        </div>
+      </motion.div>
+
+      {/* Small moon orbiting the planet */}
+      <motion.div
+        className="absolute inset-0 flex items-start justify-end my-20"
+        animate={{ rotate: 360 }}
+        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
+      >
+        <div
+          className="w-4 h-4 rounded-full bg-gray-400 border border-white/20"
+          style={{ transform: "translateX(120px)" }}
+        />
+      </motion.div>
+
+      {/* Additional asteroids */}
+      <motion.div
+        className="hidden sm:block absolute right-20 bottom-1/4"
+        aria-hidden
+        animate={{ x: [0, 4, 0, -4, 0] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <span className="absolute w-4 h-3 rounded bg-white/20 rotate-12" style={{ transform: "translate(0px, 0px)" }} />
+        <span className="absolute w-2 h-2 rounded-full bg-white/30" style={{ transform: "translate(20px, 10px)" }} />
+        <span className="absolute w-3 h-2 rounded bg-white/25 rotate-45" style={{ transform: "translate(-15px, 15px)" }} />
+      </motion.div>
     </motion.div>
   );
 };
@@ -233,10 +278,6 @@ const Hero = () => {
           scale: [1, 1.05, 0.98, 1],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.2), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       {/* Top-right blob */}
       <motion.div
@@ -248,10 +289,6 @@ const Hero = () => {
           scale: [1, 1.05, 0.98, 1],
         }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       {/* Bottom-right blob */}
       <motion.div
@@ -263,10 +300,6 @@ const Hero = () => {
           scale: [1, 1.07, 0.95, 1],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(255,104,240,0.2), rgba(23,172,255,0.12), transparent)",
-        }}
       />
 
       {/* Content */}
@@ -284,7 +317,7 @@ const Hero = () => {
             {/* Skill Highlights */}
             <div className="mt-6 space-y-4">
               {/* Stack badges */}
-              <div className="flex flex-wrap gap-2 pt-2">
+              <div className="flex flex-wrap justify-center gap-2 pt-2">
                 {[
                   "React",
                   "Next.js",

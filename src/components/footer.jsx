@@ -14,7 +14,7 @@ const fadeUp = {
 const Footer = () => {
   return (
     <footer
-      className="relative bg-gradient-to-b from-black via-[#0a0a0f] to-black text-white py-10 px-4 font-mono overflow-hidden"
+      className="relative bg-transparent text-white py-10 px-4 font-mono overflow-hidden"
     >
       {/* Ambient blobs */}
       <motion.div
@@ -22,20 +22,12 @@ const Footer = () => {
         className="pointer-events-none absolute -top-24 -left-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-40"
         animate={{ x: [0, 20, -15, 0], y: [0, -15, 10, 0], scale: [1, 1.05, 0.95, 1] }}
         transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -bottom-24 -right-24 w-[30rem] h-[30rem] rounded-full blur-3xl opacity-40"
         animate={{ x: [0, -20, 15, 0], y: [0, 15, -10, 0], scale: [1, 1.07, 0.95, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(255,104,240,0.18), rgba(23,172,255,0.12), transparent)",
-        }}
       />
 
       {/* Content */}

@@ -43,7 +43,7 @@ function MiniRepoCard({ p }) {
       href={p.githubLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block rounded-2xl border border-white/10 bg-[#0b0f17]/70 backdrop-blur-xl overflow-hidden"
+      className="group relative block rounded-2xl border border-white/10 bg-transparent overflow-hidden"
       whileHover={{ y: -4, scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
@@ -296,7 +296,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0f] to-black py-24"
+      className="relative overflow-hidden bg-transparent py-24"
     >
       {/* twinkling starfield */}
       {stars.map((s, i) => (
@@ -331,10 +331,6 @@ const Projects = () => {
           scale: [1, 1.05, 0.98, 1],
         }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       <motion.div
         aria-hidden
@@ -345,10 +341,6 @@ const Projects = () => {
           scale: [1, 1.07, 0.95, 1],
         }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(255,104,240,0.18), rgba(23,172,255,0.12), transparent)",
-        }}
       />
 
       <div

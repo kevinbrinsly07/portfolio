@@ -28,7 +28,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="relative bg-gradient-to-b from-black via-[#070a12] to-black py-24 sm:py-32 lg:py-40 text-center overflow-hidden"
+      className="relative bg-transparent py-24 sm:py-32 lg:py-40 text-center overflow-hidden"
     >
       {/* Starfield */}
       {Array.from({ length: 70 }).map((_, i) => (
@@ -53,20 +53,12 @@ const Contact = () => {
         className="pointer-events-none absolute -top-32 -left-32 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-45"
         animate={{ x: [0, 20, -15, 0], y: [0, -15, 10, 0], scale: [1, 1.05, 0.95, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -bottom-32 -right-32 w-[36rem] h-[36rem] rounded-full blur-3xl opacity-45"
         animate={{ x: [0, -20, 15, 0], y: [0, 15, -10, 0], scale: [1, 1.08, 0.97, 1] }}
         transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(255,104,240,0.18), rgba(23,172,255,0.12), transparent)",
-        }}
       />
 
       {/* Content */}
@@ -82,7 +74,6 @@ const Contact = () => {
           <motion.div
             aria-hidden
             className="absolute -top-1 left-0 right-0 h-[2px]"
-            style={{ background: "linear-gradient(90deg, #17acff, #ff68f0)" }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.5 }}
@@ -90,7 +81,7 @@ const Contact = () => {
           />
           {/* panel */}
           <motion.div
-            className="text-left w-full rounded-xl border border-white/10 bg-[#0b0f17]/70 backdrop-blur"
+            className="text-left w-full rounded-xl border border-white/10 bg-transparent"
             variants={ghPanel}
             initial="hidden"
             whileInView="show"

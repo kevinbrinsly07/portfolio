@@ -147,7 +147,7 @@ function GithubSkillsCard() {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
     >
-      <div className="rounded-xl border border-white/10 bg-[#0b0f17]/70 backdrop-blur">
+      <div className="rounded-xl border border-white/10 bg-transparent">
         <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
           <div className="flex items-center gap-2 text-white/90">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="opacity-80">
@@ -223,7 +223,7 @@ const Skills = () => {
   const underlineScale = useTransform(smooth, [0, 1], [0.4, 1]);
 
   return (
-    <section id="skills" className="relative overflow-hidden bg-gradient-to-b from-black via-[#0a0a0f] to-black pt-40 pb-40">
+    <section id="skills" className="relative overflow-hidden bg-transparent pt-40 pb-40">
       {/* twinkling starfield */}
       {stars.map((s, i) => (
         <motion.div
@@ -252,20 +252,12 @@ const Skills = () => {
         className="pointer-events-none absolute -right-20 w-[22rem] h-[22rem] rounded-full blur-3xl"
         animate={{ x: [0, -30, 10, 0], y: [0, 20, -10, 0], scale: [1, 1.05, 0.98, 1] }}
         transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
       <motion.div
         aria-hidden
         className="pointer-events-none absolute -left-24 -top-12 w-[32rem] h-[32rem] rounded-full blur-3xl opacity-60"
         animate={{ x: [0, 25, -15, 0], y: [0, -20, 10, 0], scale: [1, 1.05, 0.98, 1] }}
         transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-        style={{
-          background:
-            "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)",
-        }}
       />
 
       <div ref={sectionRef} className="cursor-pointer container mx-auto px-6 text-center relative z-10">
