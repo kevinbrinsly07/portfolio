@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import './App.css';
 import Navbar from './components/navbar';
 import Hero from './components/hero';
-import About from './components/about';
-import Skills from './components/skills';
-import Projects from './components/projects';
-import Contact from './components/contact';
-import Footer from './components/footer';
+
+// Lazy load components that are below the fold
+const About = lazy(() => import('./components/about'));
+const Skills = lazy(() => import('./components/skills'));
+const Projects = lazy(() => import('./components/projects'));
+const Contact = lazy(() => import('./components/contact'));
+const Footer = lazy(() => import('./components/footer'));
 
 function App() {
   return (
@@ -14,12 +16,16 @@ function App() {
       <Navbar />
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Contact />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <About />
+          <Skills />
+          <Projects />
+          <Contact />
+        </Suspense>
       </main>
-      <Footer />
+      <Suspense fallback={<div />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 }
