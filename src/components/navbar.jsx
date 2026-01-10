@@ -147,9 +147,9 @@ const Navbar = () => {
           <motion.h1
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="text-xl font-bold font-mono"
+            className="text-xl font-bold bbh-bartle bg-gradient-to-b from-[#2980B9] to-[#6DD5FA] bg-clip-text text-transparent"
           >
-            BRINSLY
+            B
           </motion.h1>
 
           {/* Desktop Menu */}
@@ -173,7 +173,7 @@ const Navbar = () => {
                   {section}
                 </Link>
                 {/* underline on hover (and can be extended to active via CSS if desired) */}
-                <span className="pointer-events-none block h-[2px] mt-1 bg-gradient-to-r from-[#17acff] to-[#ff68f0] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+                <span className="pointer-events-none block h-[2px] mt-1 bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
               </motion.li>
             ))}
           </motion.ul>
@@ -249,7 +249,7 @@ const Navbar = () => {
                       duration={500}
                       spy={true}
                       offset={-80}
-                      className="block text-lg hover:text-[#17acff] cursor-pointer"
+                      className="block text-lg hover:text-[#17acff] cursor-pointer font-bold"
                       onClick={() => setIsMobileMenuOpen(false)}
                     >
                       {section}

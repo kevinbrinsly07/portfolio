@@ -43,13 +43,13 @@ function MiniRepoCard({ p }) {
       href={p.githubLink}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative block rounded-2xl border border-white/10 bg-transparent overflow-hidden"
+      className="group relative block rounded-2xl border border-white/10 bg-black overflow-hidden"
       whileHover={{ y: -4, scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       transition={{ type: "spring", stiffness: 300, damping: 22 }}
     >
       {/* top accent bar */}
-      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#17acff] via-[#7ec8ff] to-[#ff68f0] opacity-80" />
+      <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-[#2980B9] via-[#FFFFFF] to-[#6DD5FA] opacity-80" />
 
       {/* header: repo path + public pill */}
       <div className="px-5 pt-5 pb-2 flex items-center justify-between">
@@ -356,12 +356,12 @@ const Projects = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
         >
-          <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
+          <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>
             Projects
           </LinearGradient>
           <motion.span
             aria-hidden
-            className="block h-[3px] mt-3 origin-left bg-gradient-to-r from-[#17acff] to-[#ff68f0] rounded-full"
+            className="block h-[3px] mt-3 origin-left bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] rounded-full"
             style={{ scaleX: underlineScale }}
           />
         </motion.h2>

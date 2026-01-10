@@ -147,7 +147,7 @@ function GithubSkillsCard() {
       viewport={{ once: true, amount: 0.3 }}
       transition={{ type: "spring", stiffness: 260, damping: 24 }}
     >
-      <div className="rounded-xl border border-white/10 bg-transparent">
+      <div className="rounded-xl border border-white/10 bg-black">
         <div className="flex items-center justify-between px-5 py-3 border-b border-white/10">
           <div className="flex items-center gap-2 text-white/90">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" className="opacity-80">
@@ -270,12 +270,12 @@ const Skills = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ type: "spring", stiffness: 300, damping: 24 }}
         >
-          <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
+          <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>
             Technology Stack
           </LinearGradient>
           <motion.span
             aria-hidden
-            className="block h-[3px] mt-3 origin-left bg-gradient-to-r from-[#17acff] to-[#ff68f0] rounded-full"
+            className="block h-[3px] mt-3 origin-left bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] rounded-full"
             style={{ scaleX: underlineScale }}
           />
         </motion.h2>

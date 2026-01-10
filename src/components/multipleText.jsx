@@ -9,8 +9,8 @@ const MultipleText = () => {
     const options = {
       strings: [
         "Software Engineer",
-        "Front-end Developer",
-        "Back-end Developer",
+        "Full-Stack Developer",
+        "Mobile Developer",
       ],
       typeSpeed: 100,
       backSpeed: 100,
@@ -29,8 +29,8 @@ const MultipleText = () => {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4 sm:p-6 lg:p-8 poppins lg:mt-0 mt-20 sm:mt-32">
       <h4 className="text-white text-lg sm:text-xl md:text-2xl mb-2 font-semibold font-mono">Hello, It's Me</h4>
-      <h1 className="text-white text-3xl/[80%] sm:text-5xl/[80%] md:text-6xl/[80%] lg:text-7xl/[80%] xl:text-8xl/[80%] font-[800] mb-4 leading-tight">
-        <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
+      <h1 className="text-white bbh-bartle text-3xl/[80%] sm:text-4xl/[80%] md:text-5xl/[80%] lg:text-6xl/[80%] xl:text-7xl/[80%] font-[800] mb-4 leading-tight">
+        <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>
           KEVIN <br/> BRINSLY
         </LinearGradient>
       </h1>

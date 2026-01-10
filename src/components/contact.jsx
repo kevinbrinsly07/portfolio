@@ -81,7 +81,7 @@ const Contact = () => {
           />
           {/* panel */}
           <motion.div
-            className="text-left w-full rounded-xl border border-white/10 bg-transparent"
+            className="text-left w-full rounded-xl border border-white/10 bg-black"
             variants={ghPanel}
             initial="hidden"
             whileInView="show"
@@ -111,7 +111,7 @@ const Contact = () => {
                 className="text-3xl sm:text-4xl font-bold text-white font-mono inline-flex items-center gap-2"
                 variants={ghLine}
               >
-                <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>
+                <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>
                   Contact Me
                 </LinearGradient>
                 <motion.span

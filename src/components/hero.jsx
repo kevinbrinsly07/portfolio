@@ -37,20 +37,63 @@ const SpaceHero = () => {
 
       {/* floating satellites */}
       <motion.div
-        className="absolute w-6 h-6 rounded-full bg-white/20 border border-white/20"
+        className="absolute"
         style={{ top: "8%", left: "12%" }}
-        animate={{ y: [0, -6, 0, 6, 0] }}
+        animate={{ y: [0, -6, 0, 6, 0], rotate: [0, 360] }}
         transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-      />
+      >
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <defs>
+            <radialGradient id="moon1">
+              <stop offset="0%" stopColor="#e2e8f0" />
+              <stop offset="100%" stopColor="#94a3b8" />
+            </radialGradient>
+            <filter id="moonGlow">
+              <feGaussianBlur stdDeviation="1" />
+            </filter>
+          </defs>
+          <circle cx="12" cy="12" r="9" fill="url(#moon1)" filter="url(#moonGlow)" />
+          <circle cx="12" cy="12" r="8" fill="#cbd5e1" />
+          {/* Craters */}
+          <circle cx="9" cy="10" r="2" fill="#94a3b8" opacity="0.4" />
+          <circle cx="15" cy="13" r="1.5" fill="#94a3b8" opacity="0.3" />
+          <circle cx="13" cy="8" r="1" fill="#94a3b8" opacity="0.5" />
+          {/* Highlight */}
+          <ellipse cx="10" cy="9" rx="3" ry="2" fill="#f1f5f9" opacity="0.4" />
+        </svg>
+      </motion.div>
       <motion.div
-        className="absolute w-8 h-8 rounded-full bg-white/10 border border-white/20"
+        className="absolute"
         style={{ bottom: "12%", right: "8%" }}
-        animate={{ y: [0, 6, 0, -6, 0] }}
+        animate={{ y: [0, 6, 0, -6, 0], rotate: [0, -360] }}
         transition={{ duration: 9.5, repeat: Infinity, ease: "easeInOut" }}
-      />
+      >
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <defs>
+            <radialGradient id="planet1">
+              <stop offset="0%" stopColor="#fbbf24" />
+              <stop offset="50%" stopColor="#f59e0b" />
+              <stop offset="100%" stopColor="#d97706" />
+            </radialGradient>
+            <filter id="planetGlow">
+              <feGaussianBlur stdDeviation="2" />
+            </filter>
+          </defs>
+          <circle cx="16" cy="16" r="13" fill="url(#planet1)" filter="url(#planetGlow)" opacity="0.3" />
+          <circle cx="16" cy="16" r="11" fill="url(#planet1)" />
+          {/* Surface details */}
+          <ellipse cx="12" cy="14" rx="4" ry="2" fill="#ea580c" opacity="0.3" />
+          <ellipse cx="19" cy="17" rx="3" ry="1.5" fill="#ea580c" opacity="0.4" />
+          <circle cx="14" cy="19" r="1.5" fill="#dc2626" opacity="0.2" />
+          {/* Highlight */}
+          <ellipse cx="13" cy="12" rx="4" ry="3" fill="#fef3c7" opacity="0.3" />
+          {/* Ring */}
+          <ellipse cx="16" cy="16" rx="15" ry="4" fill="none" stroke="#fbbf24" strokeWidth="1" opacity="0.4" />
+          <ellipse cx="16" cy="16" rx="14" ry="3.5" fill="none" stroke="#fde68a" strokeWidth="0.5" opacity="0.6" />
+        </svg>
+      </motion.div>
 
       {/* RIGHT-SIDE SPACE CLUSTER */}
-      {/* Nebula glow */}
       {/* Mini satellite */}
       <motion.div
         className="absolute right-24 top-20 scale-90 md:scale-100"
@@ -59,46 +102,103 @@ const SpaceHero = () => {
         transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
       >
         <svg
-          width="54"
-          height="34"
-          viewBox="0 0 54 34"
+          width="70"
+          height="50"
+          viewBox="0 0 70 50"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <rect
-            x="22"
-            y="12"
-            width="10"
-            height="10"
-            rx="2"
-            fill="#cbd5e1"
-            stroke="rgba(255,255,255,0.6)"
-          />
-          <rect
-            x="2"
-            y="10"
-            width="18"
-            height="14"
-            rx="2"
-            fill="#111827"
-            stroke="#94a3b8"
-          />
-          <rect
-            x="34"
-            y="10"
-            width="18"
-            height="14"
-            rx="2"
-            fill="#111827"
-            stroke="#94a3b8"
-          />
-          <rect x="6" y="12" width="10" height="2" fill="#22d3ee" />
-          <rect x="6" y="16" width="10" height="2" fill="#22d3ee" />
-          <rect x="6" y="20" width="10" height="2" fill="#22d3ee" />
-          <rect x="38" y="12" width="10" height="2" fill="#a78bfa" />
-          <rect x="38" y="16" width="10" height="2" fill="#a78bfa" />
-          <rect x="38" y="20" width="10" height="2" fill="#a78bfa" />
-          <circle cx="27" cy="17" r="2" fill="#0ea5e9" />
+          <defs>
+            {/* Solar panel gradient */}
+            <linearGradient id="solarPanel" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stopColor="#1e3a8a" />
+              <stop offset="50%" stopColor="#1e40af" />
+              <stop offset="100%" stopColor="#1e293b" />
+            </linearGradient>
+            
+            {/* Metallic body gradient */}
+            <linearGradient id="satBody" x1="50%" y1="0%" x2="50%" y2="100%">
+              <stop offset="0%" stopColor="#f1f5f9" />
+              <stop offset="50%" stopColor="#cbd5e1" />
+              <stop offset="100%" stopColor="#94a3b8" />
+            </linearGradient>
+            
+            {/* Glow for satellite */}
+            <filter id="satGlow">
+              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
+          {/* Left solar panel */}
+          <g>
+            <rect x="2" y="14" width="20" height="20" rx="1" fill="url(#solarPanel)" stroke="#60a5fa" strokeWidth="0.5" />
+            {/* Solar cells grid */}
+            <rect x="5" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="10" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="15" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="5" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="10" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="15" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="5" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="10" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="15" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="5" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="10" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="15" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            {/* Panel shine */}
+            <rect x="4" y="15" width="2" height="16" fill="#93c5fd" opacity="0.3" />
+          </g>
+
+          {/* Central body */}
+          <g>
+            <rect x="26" y="18" width="18" height="14" rx="2" fill="url(#satBody)" stroke="#e2e8f0" strokeWidth="0.5" />
+            {/* Body details */}
+            <rect x="28" y="20" width="14" height="1.5" fill="#64748b" opacity="0.6" />
+            <rect x="28" y="23" width="14" height="1.5" fill="#64748b" opacity="0.4" />
+            <rect x="28" y="26" width="14" height="1.5" fill="#64748b" opacity="0.6" />
+            <rect x="28" y="29" width="14" height="1.5" fill="#64748b" opacity="0.4" />
+            {/* Highlight */}
+            <rect x="27" y="19" width="2" height="10" fill="#f8fafc" opacity="0.4" />
+            {/* Antenna */}
+            <line x1="35" y1="18" x2="35" y2="10" stroke="#94a3b8" strokeWidth="1" />
+            <circle cx="35" cy="9" r="2" fill="#60a5fa" filter="url(#satGlow)">
+              <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+            </circle>
+          </g>
+
+          {/* Right solar panel */}
+          <g>
+            <rect x="48" y="14" width="20" height="20" rx="1" fill="url(#solarPanel)" stroke="#60a5fa" strokeWidth="0.5" />
+            {/* Solar cells grid */}
+            <rect x="51" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="56" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="61" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="51" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="56" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="61" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="51" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="56" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="61" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="51" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect x="56" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect x="61" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            {/* Panel shine */}
+            <rect x="64" y="15" width="2" height="16" fill="#93c5fd" opacity="0.3" />
+          </g>
+
+          {/* Signal waves */}
+          <circle cx="35" cy="9" r="4" stroke="#22d3ee" strokeWidth="0.5" fill="none" opacity="0.6">
+            <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="35" cy="9" r="6" stroke="#a78bfa" strokeWidth="0.5" fill="none" opacity="0.4">
+            <animate attributeName="r" values="6;12;6" dur="3s" repeatCount="indefinite" begin="0.5s" />
+            <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" begin="0.5s" />
+          </circle>
         </svg>
       </motion.div>
 
@@ -120,67 +220,126 @@ const SpaceHero = () => {
         }}
       >
         <svg
-          width="80"
-          height="48"
-          viewBox="0 0 80 48"
+          width="100"
+          height="60"
+          viewBox="0 0 100 60"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <ellipse
-            cx="40"
-            cy="20"
-            rx="28"
-            ry="10"
-            fill="#94a3b8"
-            opacity="0.8"
-          />
-          <ellipse cx="40" cy="18" rx="14" ry="8" fill="#cbd5e1" />
-          <rect x="28" y="27" width="24" height="3" rx="1.5" fill="#60a5fa" />
-          {/* beam */}
-          <path
-            d="M30 30 L50 30 L60 48 L20 48 Z"
-            fill="url(#beam)"
-            opacity="0.25"
-          />
           <defs>
-            <linearGradient
-              id="beam"
-              x1="40"
-              y1="30"
-              x2="40"
-              y2="48"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="#93c5fd" stopOpacity="0.6" />
-              <stop offset="1" stopColor="#93c5fd" stopOpacity="0" />
+            {/* Metallic gradient for main body */}
+            <linearGradient id="metallic" x1="50" y1="5" x2="50" y2="28" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#e2e8f0" />
+              <stop offset="35%" stopColor="#94a3b8" />
+              <stop offset="65%" stopColor="#64748b" />
+              <stop offset="100%" stopColor="#475569" />
             </linearGradient>
+            
+            {/* Dome gradient */}
+            <radialGradient id="dome" cx="50%" cy="40%" r="60%">
+              <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.9" />
+              <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.5" />
+            </radialGradient>
+            
+            {/* Enhanced beam gradient */}
+            <linearGradient id="beam" x1="50" y1="32" x2="50" y2="60" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#93c5fd" stopOpacity="0.4" />
+              <stop offset="100%" stopColor="#dbeafe" stopOpacity="0" />
+            </linearGradient>
+            
+            {/* Glow effect */}
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+            
+            {/* Outer glow */}
+            <filter id="outerGlow">
+              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feMerge>
+                <feMergeNode in="coloredBlur"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
           </defs>
-        </svg>
-      </motion.div>
 
-      {/* Asteroid cluster */}
-      <motion.div
-        className="hidden sm:block absolute right-16 top-1/3"
-        aria-hidden
-        animate={{ x: [0, -6, 0, 6, 0] }}
-        transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <span
-          className="absolute w-2 h-2 rounded-full bg-white/30"
-          style={{ transform: "translate(0px, 0px)" }}
-        />
-        <span
-          className="absolute w-3 h-3 rounded-full bg-white/40"
-          style={{ transform: "translate(14px, 8px)" }}
-        />
-        <span
-          className="absolute w-1.5 h-1.5 rounded-full bg-white/30"
-          style={{ transform: "translate(-10px, 16px)" }}
-        />
-        <span
-          className="absolute w-2 h-2 rounded-full bg-white/30"
-          style={{ transform: "translate(6px, 22px)" }}
-        />
+          {/* Outer glow ring */}
+          <ellipse cx="50" cy="22" rx="38" ry="13" fill="#60a5fa" opacity="0.15" filter="url(#outerGlow)" />
+          
+          {/* Main saucer body - bottom */}
+          <ellipse cx="50" cy="24" rx="35" ry="12" fill="#1e293b" opacity="0.4" />
+          
+          {/* Main saucer body - middle layer with metallic effect */}
+          <ellipse cx="50" cy="22" rx="35" ry="12" fill="url(#metallic)" />
+          
+          {/* Edge highlight */}
+          <ellipse cx="50" cy="20.5" rx="35" ry="2" fill="#cbd5e1" opacity="0.6" />
+          
+          {/* Dark underside */}
+          <ellipse cx="50" cy="23.5" rx="32" ry="10" fill="#0f172a" opacity="0.5" />
+          
+          {/* Cockpit dome */}
+          <ellipse cx="50" cy="14" rx="16" ry="10" fill="url(#dome)" filter="url(#glow)" />
+          
+          {/* Dome highlight */}
+          <ellipse cx="48" cy="11" rx="8" ry="5" fill="#ffffff" opacity="0.4" />
+          
+          {/* Window details */}
+          <ellipse cx="50" cy="14" rx="12" ry="7" fill="#1e3a8a" opacity="0.6" />
+          <ellipse cx="49" cy="13" rx="6" ry="4" fill="#bfdbfe" opacity="0.3" />
+
+          {/* Decorative lights around the rim */}
+          <circle cx="22" cy="22" r="1.5" fill="#22d3ee" filter="url(#glow)">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="35" cy="20" r="1.5" fill="#a78bfa" filter="url(#glow)">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="50" cy="19" r="1.5" fill="#22d3ee" filter="url(#glow)">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="65" cy="20" r="1.5" fill="#a78bfa" filter="url(#glow)">
+            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="78" cy="22" r="1.5" fill="#22d3ee" filter="url(#glow)">
+            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+          </circle>
+
+          {/* Bottom panel details */}
+          <ellipse cx="50" cy="25" rx="28" ry="9" fill="#334155" opacity="0.3" />
+          <ellipse cx="50" cy="26" rx="22" ry="6" fill="#1e293b" opacity="0.4" />
+          
+          {/* Central bottom light */}
+          <rect x="42" y="29" width="16" height="3" rx="1.5" fill="#60a5fa" opacity="0.9" filter="url(#glow)">
+            <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite" />
+          </rect>
+
+          {/* Tractor beam */}
+          <path
+            d="M35 32 L65 32 L75 60 L25 60 Z"
+            fill="url(#beam)"
+            opacity="0.4"
+          />
+          
+          {/* Beam particles */}
+          <circle cx="45" cy="40" r="1" fill="#93c5fd" opacity="0.6">
+            <animate attributeName="cy" values="35;55;35" dur="3s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="55" cy="45" r="1" fill="#dbeafe" opacity="0.6">
+            <animate attributeName="cy" values="40;58;40" dur="2.5s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite" />
+          </circle>
+          <circle cx="50" cy="38" r="1" fill="#bfdbfe" opacity="0.6">
+            <animate attributeName="cy" values="33;52;33" dur="2.8s" repeatCount="indefinite" />
+            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.8s" repeatCount="indefinite" />
+          </circle>
+        </svg>
       </motion.div>
 
       {/* Twinkling stars */}
@@ -219,34 +378,32 @@ const SpaceHero = () => {
           delay: 5,
         }}
       >
-        <div className="relative">
-          <div className="w-1 h-1 rounded-full bg-white/80 shadow-[0_0_10px_rgba(255,255,255,0.8)]" />
-          <div className="absolute top-0 left-2 w-8 h-0.5 bg-gradient-to-r from-white/60 to-transparent" />
-        </div>
-      </motion.div>
-
-      {/* Small moon orbiting the planet */}
-      <motion.div
-        className="absolute inset-0 flex items-start justify-end my-20"
-        animate={{ rotate: 360 }}
-        transition={{ repeat: Infinity, duration: 20, ease: "linear" }}
-      >
-        <div
-          className="w-4 h-4 rounded-full bg-gray-400 border border-white/20"
-          style={{ transform: "translateX(120px)" }}
-        />
-      </motion.div>
-
-      {/* Additional asteroids */}
-      <motion.div
-        className="hidden sm:block absolute right-20 bottom-1/4"
-        aria-hidden
-        animate={{ x: [0, 4, 0, -4, 0] }}
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <span className="absolute w-4 h-3 rounded bg-white/20 rotate-12" style={{ transform: "translate(0px, 0px)" }} />
-        <span className="absolute w-2 h-2 rounded-full bg-white/30" style={{ transform: "translate(20px, 10px)" }} />
-        <span className="absolute w-3 h-2 rounded bg-white/25 rotate-45" style={{ transform: "translate(-15px, 15px)" }} />
+        <svg width="50" height="20" viewBox="0 0 50 20" fill="none">
+          <defs>
+            <radialGradient id="cometHead">
+              <stop offset="0%" stopColor="#ffffff" />
+              <stop offset="50%" stopColor="#93c5fd" />
+              <stop offset="100%" stopColor="#60a5fa" />
+            </radialGradient>
+            <linearGradient id="cometTail" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#ffffff" stopOpacity="0.8" />
+              <stop offset="30%" stopColor="#93c5fd" stopOpacity="0.5" />
+              <stop offset="60%" stopColor="#60a5fa" stopOpacity="0.2" />
+              <stop offset="100%" stopColor="#3b82f6" stopOpacity="0" />
+            </linearGradient>
+            <filter id="cometGlow">
+              <feGaussianBlur stdDeviation="1.5" />
+            </filter>
+          </defs>
+          {/* Tail */}
+          <ellipse cx="25" cy="10" rx="24" ry="3" fill="url(#cometTail)" opacity="0.6" />
+          <ellipse cx="25" cy="10" rx="24" ry="1.5" fill="url(#cometTail)" opacity="0.8" />
+          {/* Head glow */}
+          <circle cx="4" cy="10" r="4" fill="url(#cometHead)" filter="url(#cometGlow)" opacity="0.6" />
+          {/* Head core */}
+          <circle cx="4" cy="10" r="2.5" fill="url(#cometHead)" />
+          <circle cx="3" cy="9" r="1" fill="#ffffff" opacity="0.8" />
+        </svg>
       </motion.div>
     </motion.div>
   );
@@ -348,12 +505,12 @@ const Hero = () => {
               <div className="flex flex-wrap justify-center gap-2 pt-2">
                 {[
                   "React",
-                  "Next.js",
-                  "TypeScript",
+                  "React Native",
+                  "JavaScript",
                   "Tailwind CSS",
-                  "Framer Motion",
-                  "Vite",
-                  "Redux",
+                  "NestJS",
+                  "ExpressJS",
+                  "Python",
                 ].map((tech) => (
                   <span
                     key={tech}
@@ -370,16 +527,16 @@ const Hero = () => {
               <div className="flex gap-8 animate-[marquee_18s_linear_infinite] whitespace-nowrap text-white/60 text-sm font-mono">
                 {[
                   "react",
-                  "next",
-                  "vue",
-                  "ts",
+                  "react-native",
+                  "javascript",
+                  "python",
                   "tailwind",
                   "vite",
-                  "fmotion",
-                  "jest",
-                  "playwright",
-                  "storybook",
-                  "redux",
+                  "nestjs",
+                  "express",
+                  "mongodb",
+                  "mysql",
+                  "java",
                 ].map((k) => (
                   <span
                     key={k}
@@ -390,16 +547,16 @@ const Hero = () => {
                 ))}
                 {[
                   "react",
-                  "next",
-                  "vue",
-                  "ts",
+                  "react-native",
+                  "javascript",
+                  "python",
                   "tailwind",
                   "vite",
-                  "fmotion",
-                  "jest",
-                  "playwright",
-                  "storybook",
-                  "redux",
+                  "nestjs",
+                  "express",
+                  "mongodb",
+                  "mysql",
+                  "java",
                 ].map((k) => (
                   <span
                     key={`${k}-2`}

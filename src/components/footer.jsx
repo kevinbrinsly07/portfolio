@@ -40,7 +40,7 @@ const Footer = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h2 className="text-2xl font-semibold">BRINSLY</h2>
+          <h2 className="text-2xl font-semibold bg-gradient-to-r from-[#2980B9] via-[#17acff] to-[#6DD5FA] bg-clip-text text-transparent">BRINSLY</h2>
           <p className="text-sm">&copy; 2025 BRINSLY | All Rights Reserved</p>
         </motion.div>
 
@@ -97,7 +97,7 @@ const Footer = () => {
         whileInView="show"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <p>Designed & Developed by Kevin Brinsly</p>
+        <p>Designed & Developed by <span className="bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] bg-clip-text text-transparent">Kevin Brinsly</span></p>
       </motion.div>
     </footer>
   );

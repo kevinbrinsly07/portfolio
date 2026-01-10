@@ -115,7 +115,7 @@ const About = () => {
           <div className="px-5 py-5">
             {/* Title with caret */}
             <motion.h2 className="text-3xl sm:text-4xl font-bold text-white font-mono inline-flex items-center gap-2" variants={ghLine} style={{ y: headingY }}>
-              <LinearGradient gradient={["to left", "#17acff ,#ff68f0"]}>About Me</LinearGradient>
+              <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>About Me</LinearGradient>
               <motion.span
                 aria-hidden
                 className="h-6 w-1 bg-white/90"
@@ -142,7 +142,7 @@ const About = () => {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 24 }}
               >
-                As a software engineer, I build <span className="text-yellow-300">dynamic, efficient</span> web apps across the stack. On the frontend I ship with <span className="text-yellow-300">React & React Native</span>; on the backend I design APIs with <span className="text-yellow-300">NestJS</span> and <span className="text-yellow-300">Express</span>, and I’m comfortable in <span className="text-yellow-300">PHP</span> and <span className="text-yellow-300">Java</span> when the job calls for it.
+                As a <span className="text-yellow-300">software engineer</span> with a strong foundation in full-stack development, I specialize in building <span className="text-yellow-300">dynamic, scalable applications</span> across web and mobile platforms. I craft intuitive frontends with <span className="text-yellow-300">React & React Native</span>, design robust backend systems using <span className="text-yellow-300">NestJS</span> and <span className="text-yellow-300">Express</span>, and have hands-on experience with <span className="text-yellow-300">PHP</span>, <span className="text-yellow-300">Java</span>, and <span className="text-yellow-300">Python</span>.
               </motion.p>
               <motion.p
                 className="text-white/85 font-mono text-[16px] leading-relaxed"
@@ -151,7 +151,7 @@ const About = () => {
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ type: "spring", stiffness: 300, damping: 24, delay: 0.06 }}
               >
-                I work with <span className="text-yellow-300">MySQL</span> and <span className="text-yellow-300">MongoDB</span>, and code daily in <span className="text-yellow-300">JavaScript</span> and <span className="text-yellow-300">Python</span>. I love clean abstractions, pragmatic trade‑offs, and shipping features that matter.
+                I work extensively with <span className="text-yellow-300">MySQL</span> and <span className="text-yellow-300">MongoDB</span> for data management, and leverage modern tools like <span className="text-yellow-300">Tailwind CSS</span> and <span className="text-yellow-300">Vite</span> to deliver high-performance user experiences. I'm passionate about clean code, innovative solutions, and building applications that make a real impact.
               </motion.p>
               {/* shimmer overlay */}
               <motion.div
