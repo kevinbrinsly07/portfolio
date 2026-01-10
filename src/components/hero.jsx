@@ -3,6 +3,14 @@ import MultipleText from "./multipleText";
 // eslint-disable-next-line no-unused-vars
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
+const stars = Array.from({ length: 80 }, () => ({
+  top: `${Math.random() * 100}%`,
+  left: `${Math.random() * 100}%`,
+  size: `${Math.random() * 2 + 1}px`,
+  duration: Math.random() * 4 + 2,
+  delay: Math.random() * 6,
+}));
+
 const SpaceHero = () => {
   return (
     <motion.div
@@ -267,6 +275,26 @@ const Hero = () => {
       id="hero"
       className="relative flex flex-col items-center justify-between overflow-hidden bg-transparent min-h-screen"
     >
+      {/* twinkling starfield */}
+      {stars.map((s, i) => (
+        <motion.div
+          key={`star-${i}`}
+          className="absolute rounded-full bg-white pointer-events-none"
+          style={{
+            top: s.top,
+            left: s.left,
+            width: s.size,
+            height: s.size,
+          }}
+          animate={{ opacity: [0.2, 1, 0.2] }}
+          transition={{
+            duration: s.duration,
+            repeat: Infinity,
+            delay: s.delay,
+          }}
+        />
+      ))}
+
       {/* Ambient animated blobs */}
       {/* Top-left blob */}
       <motion.div
