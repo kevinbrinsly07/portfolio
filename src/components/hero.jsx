@@ -499,6 +499,42 @@ const Hero = () => {
         >
           <motion.div className="flex-1">
             <MultipleText />
+
+
+            {/* Download CV Button */}
+            <div className="flex justify-center">
+              <a
+                href="./cv.pdf"
+                download="CV.pdf"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] text-white font-semibold rounded-xl hover:from-[#2980B9]/80 hover:to-[#6DD5FA]/80 transition-all duration-500 shadow-2xl hover:shadow-blue-500/25 transform hover:scale-110 hover:-translate-y-1 border border-white/20 hover:border-white/40 overflow-hidden"
+              >
+                {/* Background glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-xl" />
+                
+                {/* Download icon */}
+                <svg
+                  className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                  />
+                </svg>
+                
+                {/* Button text */}
+                <span className="relative z-10">Download CV</span>
+                
+                {/* Subtle pulse animation */}
+                <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              </a>
+            </div>
+            
             {/* Skill Highlights */}
             <div className="mt-6 space-y-4">
               {/* Stack badges */}
@@ -521,6 +557,8 @@ const Hero = () => {
                 ))}
               </div>
             </div>
+
+            
 
             {/* Logo marquee */}
             <div className="mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
@@ -567,6 +605,9 @@ const Hero = () => {
                 ))}
               </div>
             </div>
+
+            
+
             <style>{`
               @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
             `}</style>
