@@ -52,7 +52,13 @@ const SpaceHero = () => {
               <feGaussianBlur stdDeviation="1" />
             </filter>
           </defs>
-          <circle cx="12" cy="12" r="9" fill="url(#moon1)" filter="url(#moonGlow)" />
+          <circle
+            cx="12"
+            cy="12"
+            r="9"
+            fill="url(#moon1)"
+            filter="url(#moonGlow)"
+          />
           <circle cx="12" cy="12" r="8" fill="#cbd5e1" />
           {/* Craters */}
           <circle cx="9" cy="10" r="2" fill="#94a3b8" opacity="0.4" />
@@ -79,17 +85,49 @@ const SpaceHero = () => {
               <feGaussianBlur stdDeviation="2" />
             </filter>
           </defs>
-          <circle cx="16" cy="16" r="13" fill="url(#planet1)" filter="url(#planetGlow)" opacity="0.3" />
+          <circle
+            cx="16"
+            cy="16"
+            r="13"
+            fill="url(#planet1)"
+            filter="url(#planetGlow)"
+            opacity="0.3"
+          />
           <circle cx="16" cy="16" r="11" fill="url(#planet1)" />
           {/* Surface details */}
           <ellipse cx="12" cy="14" rx="4" ry="2" fill="#ea580c" opacity="0.3" />
-          <ellipse cx="19" cy="17" rx="3" ry="1.5" fill="#ea580c" opacity="0.4" />
+          <ellipse
+            cx="19"
+            cy="17"
+            rx="3"
+            ry="1.5"
+            fill="#ea580c"
+            opacity="0.4"
+          />
           <circle cx="14" cy="19" r="1.5" fill="#dc2626" opacity="0.2" />
           {/* Highlight */}
           <ellipse cx="13" cy="12" rx="4" ry="3" fill="#fef3c7" opacity="0.3" />
           {/* Ring */}
-          <ellipse cx="16" cy="16" rx="15" ry="4" fill="none" stroke="#fbbf24" strokeWidth="1" opacity="0.4" />
-          <ellipse cx="16" cy="16" rx="14" ry="3.5" fill="none" stroke="#fde68a" strokeWidth="0.5" opacity="0.6" />
+          <ellipse
+            cx="16"
+            cy="16"
+            rx="15"
+            ry="4"
+            fill="none"
+            stroke="#fbbf24"
+            strokeWidth="1"
+            opacity="0.4"
+          />
+          <ellipse
+            cx="16"
+            cy="16"
+            rx="14"
+            ry="3.5"
+            fill="none"
+            stroke="#fde68a"
+            strokeWidth="0.5"
+            opacity="0.6"
+          />
         </svg>
       </motion.div>
 
@@ -115,89 +153,383 @@ const SpaceHero = () => {
               <stop offset="50%" stopColor="#1e40af" />
               <stop offset="100%" stopColor="#1e293b" />
             </linearGradient>
-            
+
             {/* Metallic body gradient */}
             <linearGradient id="satBody" x1="50%" y1="0%" x2="50%" y2="100%">
               <stop offset="0%" stopColor="#f1f5f9" />
               <stop offset="50%" stopColor="#cbd5e1" />
               <stop offset="100%" stopColor="#94a3b8" />
             </linearGradient>
-            
+
             {/* Glow for satellite */}
             <filter id="satGlow">
-              <feGaussianBlur stdDeviation="1.5" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="1.5" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
 
           {/* Left solar panel */}
           <g>
-            <rect x="2" y="14" width="20" height="20" rx="1" fill="url(#solarPanel)" stroke="#60a5fa" strokeWidth="0.5" />
+            <rect
+              x="2"
+              y="14"
+              width="20"
+              height="20"
+              rx="1"
+              fill="url(#solarPanel)"
+              stroke="#60a5fa"
+              strokeWidth="0.5"
+            />
             {/* Solar cells grid */}
-            <rect x="5" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="10" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="15" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="5" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="10" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="15" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="5" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="10" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="15" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="5" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="10" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="15" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
+            <rect
+              x="5"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="10"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="15"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="5"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="10"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="15"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="5"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="10"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="15"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="5"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="10"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="15"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
             {/* Panel shine */}
-            <rect x="4" y="15" width="2" height="16" fill="#93c5fd" opacity="0.3" />
+            <rect
+              x="4"
+              y="15"
+              width="2"
+              height="16"
+              fill="#93c5fd"
+              opacity="0.3"
+            />
           </g>
 
           {/* Central body */}
           <g>
-            <rect x="26" y="18" width="18" height="14" rx="2" fill="url(#satBody)" stroke="#e2e8f0" strokeWidth="0.5" />
+            <rect
+              x="26"
+              y="18"
+              width="18"
+              height="14"
+              rx="2"
+              fill="url(#satBody)"
+              stroke="#e2e8f0"
+              strokeWidth="0.5"
+            />
             {/* Body details */}
-            <rect x="28" y="20" width="14" height="1.5" fill="#64748b" opacity="0.6" />
-            <rect x="28" y="23" width="14" height="1.5" fill="#64748b" opacity="0.4" />
-            <rect x="28" y="26" width="14" height="1.5" fill="#64748b" opacity="0.6" />
-            <rect x="28" y="29" width="14" height="1.5" fill="#64748b" opacity="0.4" />
+            <rect
+              x="28"
+              y="20"
+              width="14"
+              height="1.5"
+              fill="#64748b"
+              opacity="0.6"
+            />
+            <rect
+              x="28"
+              y="23"
+              width="14"
+              height="1.5"
+              fill="#64748b"
+              opacity="0.4"
+            />
+            <rect
+              x="28"
+              y="26"
+              width="14"
+              height="1.5"
+              fill="#64748b"
+              opacity="0.6"
+            />
+            <rect
+              x="28"
+              y="29"
+              width="14"
+              height="1.5"
+              fill="#64748b"
+              opacity="0.4"
+            />
             {/* Highlight */}
-            <rect x="27" y="19" width="2" height="10" fill="#f8fafc" opacity="0.4" />
+            <rect
+              x="27"
+              y="19"
+              width="2"
+              height="10"
+              fill="#f8fafc"
+              opacity="0.4"
+            />
             {/* Antenna */}
-            <line x1="35" y1="18" x2="35" y2="10" stroke="#94a3b8" strokeWidth="1" />
+            <line
+              x1="35"
+              y1="18"
+              x2="35"
+              y2="10"
+              stroke="#94a3b8"
+              strokeWidth="1"
+            />
             <circle cx="35" cy="9" r="2" fill="#60a5fa" filter="url(#satGlow)">
-              <animate attributeName="opacity" values="1;0.5;1" dur="2s" repeatCount="indefinite" />
+              <animate
+                attributeName="opacity"
+                values="1;0.5;1"
+                dur="2s"
+                repeatCount="indefinite"
+              />
             </circle>
           </g>
 
           {/* Right solar panel */}
           <g>
-            <rect x="48" y="14" width="20" height="20" rx="1" fill="url(#solarPanel)" stroke="#60a5fa" strokeWidth="0.5" />
+            <rect
+              x="48"
+              y="14"
+              width="20"
+              height="20"
+              rx="1"
+              fill="url(#solarPanel)"
+              stroke="#60a5fa"
+              strokeWidth="0.5"
+            />
             {/* Solar cells grid */}
-            <rect x="51" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="56" y="17" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="61" y="17" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="51" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="56" y="21" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="61" y="21" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="51" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="56" y="25" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="61" y="25" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="51" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
-            <rect x="56" y="29" width="4" height="3" fill="#3b82f6" opacity="0.5" />
-            <rect x="61" y="29" width="4" height="3" fill="#3b82f6" opacity="0.6" />
+            <rect
+              x="51"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="56"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="61"
+              y="17"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="51"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="56"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="61"
+              y="21"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="51"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="56"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="61"
+              y="25"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="51"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
+            <rect
+              x="56"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.5"
+            />
+            <rect
+              x="61"
+              y="29"
+              width="4"
+              height="3"
+              fill="#3b82f6"
+              opacity="0.6"
+            />
             {/* Panel shine */}
-            <rect x="64" y="15" width="2" height="16" fill="#93c5fd" opacity="0.3" />
+            <rect
+              x="64"
+              y="15"
+              width="2"
+              height="16"
+              fill="#93c5fd"
+              opacity="0.3"
+            />
           </g>
 
           {/* Signal waves */}
-          <circle cx="35" cy="9" r="4" stroke="#22d3ee" strokeWidth="0.5" fill="none" opacity="0.6">
-            <animate attributeName="r" values="4;8;4" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.6;0;0.6" dur="3s" repeatCount="indefinite" />
+          <circle
+            cx="35"
+            cy="9"
+            r="4"
+            stroke="#22d3ee"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.6"
+          >
+            <animate
+              attributeName="r"
+              values="4;8;4"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.6;0;0.6"
+              dur="3s"
+              repeatCount="indefinite"
+            />
           </circle>
-          <circle cx="35" cy="9" r="6" stroke="#a78bfa" strokeWidth="0.5" fill="none" opacity="0.4">
-            <animate attributeName="r" values="6;12;6" dur="3s" repeatCount="indefinite" begin="0.5s" />
-            <animate attributeName="opacity" values="0.4;0;0.4" dur="3s" repeatCount="indefinite" begin="0.5s" />
+          <circle
+            cx="35"
+            cy="9"
+            r="6"
+            stroke="#a78bfa"
+            strokeWidth="0.5"
+            fill="none"
+            opacity="0.4"
+          >
+            <animate
+              attributeName="r"
+              values="6;12;6"
+              dur="3s"
+              repeatCount="indefinite"
+              begin="0.5s"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.4;0;0.4"
+              dur="3s"
+              repeatCount="indefinite"
+              begin="0.5s"
+            />
           </circle>
         </svg>
       </motion.div>
@@ -228,95 +560,205 @@ const SpaceHero = () => {
         >
           <defs>
             {/* Metallic gradient for main body */}
-            <linearGradient id="metallic" x1="50" y1="5" x2="50" y2="28" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="metallic"
+              x1="50"
+              y1="5"
+              x2="50"
+              y2="28"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop offset="0%" stopColor="#e2e8f0" />
               <stop offset="35%" stopColor="#94a3b8" />
               <stop offset="65%" stopColor="#64748b" />
               <stop offset="100%" stopColor="#475569" />
             </linearGradient>
-            
+
             {/* Dome gradient */}
             <radialGradient id="dome" cx="50%" cy="40%" r="60%">
               <stop offset="0%" stopColor="#93c5fd" stopOpacity="0.9" />
               <stop offset="50%" stopColor="#60a5fa" stopOpacity="0.7" />
               <stop offset="100%" stopColor="#3b82f6" stopOpacity="0.5" />
             </radialGradient>
-            
+
             {/* Enhanced beam gradient */}
-            <linearGradient id="beam" x1="50" y1="32" x2="50" y2="60" gradientUnits="userSpaceOnUse">
+            <linearGradient
+              id="beam"
+              x1="50"
+              y1="32"
+              x2="50"
+              y2="60"
+              gradientUnits="userSpaceOnUse"
+            >
               <stop offset="0%" stopColor="#60a5fa" stopOpacity="0.8" />
               <stop offset="50%" stopColor="#93c5fd" stopOpacity="0.4" />
               <stop offset="100%" stopColor="#dbeafe" stopOpacity="0" />
             </linearGradient>
-            
+
             {/* Glow effect */}
             <filter id="glow">
-              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="2" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
-            
+
             {/* Outer glow */}
             <filter id="outerGlow">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
 
           {/* Outer glow ring */}
-          <ellipse cx="50" cy="22" rx="38" ry="13" fill="#60a5fa" opacity="0.15" filter="url(#outerGlow)" />
-          
+          <ellipse
+            cx="50"
+            cy="22"
+            rx="38"
+            ry="13"
+            fill="#60a5fa"
+            opacity="0.15"
+            filter="url(#outerGlow)"
+          />
+
           {/* Main saucer body - bottom */}
-          <ellipse cx="50" cy="24" rx="35" ry="12" fill="#1e293b" opacity="0.4" />
-          
+          <ellipse
+            cx="50"
+            cy="24"
+            rx="35"
+            ry="12"
+            fill="#1e293b"
+            opacity="0.4"
+          />
+
           {/* Main saucer body - middle layer with metallic effect */}
           <ellipse cx="50" cy="22" rx="35" ry="12" fill="url(#metallic)" />
-          
+
           {/* Edge highlight */}
-          <ellipse cx="50" cy="20.5" rx="35" ry="2" fill="#cbd5e1" opacity="0.6" />
-          
+          <ellipse
+            cx="50"
+            cy="20.5"
+            rx="35"
+            ry="2"
+            fill="#cbd5e1"
+            opacity="0.6"
+          />
+
           {/* Dark underside */}
-          <ellipse cx="50" cy="23.5" rx="32" ry="10" fill="#0f172a" opacity="0.5" />
-          
+          <ellipse
+            cx="50"
+            cy="23.5"
+            rx="32"
+            ry="10"
+            fill="#0f172a"
+            opacity="0.5"
+          />
+
           {/* Cockpit dome */}
-          <ellipse cx="50" cy="14" rx="16" ry="10" fill="url(#dome)" filter="url(#glow)" />
-          
+          <ellipse
+            cx="50"
+            cy="14"
+            rx="16"
+            ry="10"
+            fill="url(#dome)"
+            filter="url(#glow)"
+          />
+
           {/* Dome highlight */}
           <ellipse cx="48" cy="11" rx="8" ry="5" fill="#ffffff" opacity="0.4" />
-          
+
           {/* Window details */}
-          <ellipse cx="50" cy="14" rx="12" ry="7" fill="#1e3a8a" opacity="0.6" />
+          <ellipse
+            cx="50"
+            cy="14"
+            rx="12"
+            ry="7"
+            fill="#1e3a8a"
+            opacity="0.6"
+          />
           <ellipse cx="49" cy="13" rx="6" ry="4" fill="#bfdbfe" opacity="0.3" />
 
           {/* Decorative lights around the rim */}
           <circle cx="22" cy="22" r="1.5" fill="#22d3ee" filter="url(#glow)">
-            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="1;0.4;1"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="35" cy="20" r="1.5" fill="#a78bfa" filter="url(#glow)">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.4;1;0.4"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="50" cy="19" r="1.5" fill="#22d3ee" filter="url(#glow)">
-            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="1;0.4;1"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="65" cy="20" r="1.5" fill="#a78bfa" filter="url(#glow)">
-            <animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="0.4;1;0.4"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="78" cy="22" r="1.5" fill="#22d3ee" filter="url(#glow)">
-            <animate attributeName="opacity" values="1;0.4;1" dur="2s" repeatCount="indefinite" />
+            <animate
+              attributeName="opacity"
+              values="1;0.4;1"
+              dur="2s"
+              repeatCount="indefinite"
+            />
           </circle>
 
           {/* Bottom panel details */}
-          <ellipse cx="50" cy="25" rx="28" ry="9" fill="#334155" opacity="0.3" />
-          <ellipse cx="50" cy="26" rx="22" ry="6" fill="#1e293b" opacity="0.4" />
-          
+          <ellipse
+            cx="50"
+            cy="25"
+            rx="28"
+            ry="9"
+            fill="#334155"
+            opacity="0.3"
+          />
+          <ellipse
+            cx="50"
+            cy="26"
+            rx="22"
+            ry="6"
+            fill="#1e293b"
+            opacity="0.4"
+          />
+
           {/* Central bottom light */}
-          <rect x="42" y="29" width="16" height="3" rx="1.5" fill="#60a5fa" opacity="0.9" filter="url(#glow)">
-            <animate attributeName="opacity" values="0.9;0.5;0.9" dur="1.5s" repeatCount="indefinite" />
+          <rect
+            x="42"
+            y="29"
+            width="16"
+            height="3"
+            rx="1.5"
+            fill="#60a5fa"
+            opacity="0.9"
+            filter="url(#glow)"
+          >
+            <animate
+              attributeName="opacity"
+              values="0.9;0.5;0.9"
+              dur="1.5s"
+              repeatCount="indefinite"
+            />
           </rect>
 
           {/* Tractor beam */}
@@ -325,19 +767,49 @@ const SpaceHero = () => {
             fill="url(#beam)"
             opacity="0.4"
           />
-          
+
           {/* Beam particles */}
           <circle cx="45" cy="40" r="1" fill="#93c5fd" opacity="0.6">
-            <animate attributeName="cy" values="35;55;35" dur="3s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="3s" repeatCount="indefinite" />
+            <animate
+              attributeName="cy"
+              values="35;55;35"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.8;0.2;0.8"
+              dur="3s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="55" cy="45" r="1" fill="#dbeafe" opacity="0.6">
-            <animate attributeName="cy" values="40;58;40" dur="2.5s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.5s" repeatCount="indefinite" />
+            <animate
+              attributeName="cy"
+              values="40;58;40"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.8;0.2;0.8"
+              dur="2.5s"
+              repeatCount="indefinite"
+            />
           </circle>
           <circle cx="50" cy="38" r="1" fill="#bfdbfe" opacity="0.6">
-            <animate attributeName="cy" values="33;52;33" dur="2.8s" repeatCount="indefinite" />
-            <animate attributeName="opacity" values="0.8;0.2;0.8" dur="2.8s" repeatCount="indefinite" />
+            <animate
+              attributeName="cy"
+              values="33;52;33"
+              dur="2.8s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="opacity"
+              values="0.8;0.2;0.8"
+              dur="2.8s"
+              repeatCount="indefinite"
+            />
           </circle>
         </svg>
       </motion.div>
@@ -396,10 +868,31 @@ const SpaceHero = () => {
             </filter>
           </defs>
           {/* Tail */}
-          <ellipse cx="25" cy="10" rx="24" ry="3" fill="url(#cometTail)" opacity="0.6" />
-          <ellipse cx="25" cy="10" rx="24" ry="1.5" fill="url(#cometTail)" opacity="0.8" />
+          <ellipse
+            cx="25"
+            cy="10"
+            rx="24"
+            ry="3"
+            fill="url(#cometTail)"
+            opacity="0.6"
+          />
+          <ellipse
+            cx="25"
+            cy="10"
+            rx="24"
+            ry="1.5"
+            fill="url(#cometTail)"
+            opacity="0.8"
+          />
           {/* Head glow */}
-          <circle cx="4" cy="10" r="4" fill="url(#cometHead)" filter="url(#cometGlow)" opacity="0.6" />
+          <circle
+            cx="4"
+            cy="10"
+            r="4"
+            fill="url(#cometHead)"
+            filter="url(#cometGlow)"
+            opacity="0.6"
+          />
           {/* Head core */}
           <circle cx="4" cy="10" r="2.5" fill="url(#cometHead)" />
           <circle cx="3" cy="9" r="1" fill="#ffffff" opacity="0.8" />
@@ -499,7 +992,7 @@ const Hero = () => {
         >
           <motion.div className="flex-1">
             <MultipleText />
-            
+
             {/* Skill Highlights */}
             <div className="mt-6 space-y-4">
               {/* Stack badges */}
@@ -507,11 +1000,11 @@ const Hero = () => {
                 {[
                   "React",
                   "React Native",
-                  "JavaScript",
-                  "Tailwind CSS",
+                  "Laravel",
+                  "TypeScript",
                   "NestJS",
                   "ExpressJS",
-                  "Python",
+                  "Flask",
                 ].map((tech) => (
                   <span
                     key={tech}
@@ -523,8 +1016,6 @@ const Hero = () => {
               </div>
             </div>
 
-            
-
             {/* Logo marquee */}
             <div className="mt-6 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
               <div className="flex gap-8 animate-[marquee_18s_linear_infinite] whitespace-nowrap text-white/60 text-sm font-mono">
@@ -532,14 +1023,16 @@ const Hero = () => {
                   "react",
                   "react-native",
                   "javascript",
-                  "python",
+                  "typescript",
                   "tailwind",
-                  "vite",
+                  "python",
                   "nestjs",
-                  "express",
+                  "expressjs",
                   "mongodb",
+                  "sqlite",
                   "mysql",
                   "java",
+                  "php",
                 ].map((k) => (
                   <span
                     key={k}
@@ -552,14 +1045,16 @@ const Hero = () => {
                   "react",
                   "react-native",
                   "javascript",
-                  "python",
+                  "typescript",
                   "tailwind",
-                  "vite",
+                  "python",
                   "nestjs",
-                  "express",
+                  "expressjs",
                   "mongodb",
+                  "sqlite",
                   "mysql",
                   "java",
+                  "php",
                 ].map((k) => (
                   <span
                     key={`${k}-2`}
@@ -571,7 +1066,6 @@ const Hero = () => {
               </div>
             </div>
 
-
             {/* Download CV Button */}
             <div className="flex justify-center mt-10">
               <a
@@ -581,7 +1075,7 @@ const Hero = () => {
               >
                 {/* Background glow effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-400/20 to-purple-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl blur-xl" />
-                
+
                 {/* Download icon */}
                 <svg
                   className="w-5 h-5 transition-transform duration-300 group-hover:scale-110"
@@ -597,16 +1091,14 @@ const Hero = () => {
                     d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
-                
+
                 {/* Button text */}
                 <span className="relative z-10">Download CV</span>
-                
+
                 {/* Subtle pulse animation */}
                 <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               </a>
             </div>
-
-            
 
             <style>{`
               @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
