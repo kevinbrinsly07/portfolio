@@ -1,5 +1,6 @@
 import React from "react";
 import { LinearGradient } from "react-text-gradients";
+import { motion } from "framer-motion";
 
 const stars = Array.from({ length: 50 }, () => ({
   top: `${Math.random() * 100}%`,
@@ -93,8 +94,12 @@ const Experience = () => {
         className="container mx-auto px-4 sm:px-6 relative z-10 scroll-container"
       >
         {/* Heading */}
-        <h2
+        <motion.h2
           className="text-3xl sm:text-4xl font-bold text-white mb-12 text-center font-mono"
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
           <LinearGradient gradient={["to left", "#2980B9 ,#6DD5FA"]}>
             Professional Experience
@@ -103,14 +108,18 @@ const Experience = () => {
             aria-hidden
             className="block h-[3px] mt-3 mx-auto w-32 bg-gradient-to-r from-[#2980B9] to-[#6DD5FA] rounded-full"
           />
-        </h2>
+        </motion.h2>
 
         {/* Timeline */}
         <div className="max-w-4xl mx-auto">
           {experiences.map((exp, index) => (
-            <div
+            <motion.div
               key={index}
               className="relative mb-12 last:mb-0"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              viewport={{ once: true }}
             >
               {/* Timeline connector */}
               {index < experiences.length - 1 && (
@@ -202,7 +211,7 @@ const Experience = () => {
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

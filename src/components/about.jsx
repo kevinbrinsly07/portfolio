@@ -16,7 +16,7 @@ const container = {
   hidden: { opacity: 0 },
   show: (d = 0) => ({
     opacity: 1,
-    transition: { delay: d, staggerChildren: 0.08, when: "beforeChildren" },
+    transition: { delay: d, staggerChildren: 0.04, when: "beforeChildren" },
   }),
 };
 
@@ -25,13 +25,13 @@ const ghPanel = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { type: "spring", stiffness: 260, damping: 22, staggerChildren: 0.08, when: "beforeChildren" },
+    transition: { type: "spring", stiffness: 400, damping: 30, staggerChildren: 0.04, when: "beforeChildren" },
   },
 };
 
 const ghLine = {
   hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 24 } },
+  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 500, damping: 35 } },
 };
 
 const About = () => {
@@ -140,7 +140,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                transition={{ type: "spring", stiffness: 500, damping: 35 }}
               >
                 As a <span className="text-yellow-300">software engineer</span> with a strong foundation in full-stack development, I specialize in building <span className="text-yellow-300">dynamic, scalable applications</span> across web and mobile platforms. I craft intuitive frontends with <span className="text-yellow-300">React & React Native</span>, design robust backend systems using <span className="text-yellow-300">NestJS</span> and <span className="text-yellow-300">Express</span>, and have hands-on experience with <span className="text-yellow-300">PHP</span>, <span className="text-yellow-300">Java</span>, and <span className="text-yellow-300">Python</span>.
               </motion.p>
@@ -149,7 +149,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.6 }}
-                transition={{ type: "spring", stiffness: 300, damping: 24, delay: 0.06 }}
+                transition={{ type: "spring", stiffness: 500, damping: 35, delay: 0.03 }}
               >
                 I work extensively with <span className="text-yellow-300">MySQL</span> and <span className="text-yellow-300">MongoDB</span> for data management, and leverage modern tools like <span className="text-yellow-300">Tailwind CSS</span> and <span className="text-yellow-300">Vite</span> to deliver high-performance user experiences. I'm passionate about clean code, innovative solutions, and building applications that make a real impact.
               </motion.p>
