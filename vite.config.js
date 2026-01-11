@@ -8,7 +8,17 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  base: "/",
+  base: "/portfolio/",
+  server: {
+    headers: {
+      'x-robots-tag': 'index, follow'
+    }
+  },
+  preview: {
+    headers: {
+      'x-robots-tag': 'index, follow'
+    }
+  },
   build: {
     outDir: 'dist',
     rollupOptions: {
