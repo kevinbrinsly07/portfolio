@@ -8,7 +8,7 @@ export default defineConfig({
     tailwindcss(),
     react()
   ],
-  base: "/portfolio/",
+  base: "/",
   server: {
     headers: {
       'x-robots-tag': 'index, follow'
