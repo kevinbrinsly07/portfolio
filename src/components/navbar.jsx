@@ -172,6 +172,7 @@ const Navbar = () => {
               <motion.li key={section} variants={itemVariants} className="relative group">
                 <Link
                   to={section.toLowerCase()}
+                  href={`#${section.toLowerCase()}`}
                   smooth={true}
                   duration={500}
                   spy={true}
@@ -258,6 +259,7 @@ const Navbar = () => {
                   <motion.li key={section} variants={itemVariants}>
                     <Link
                       to={section.toLowerCase()}
+                      href={`#${section.toLowerCase()}`}
                       smooth={true}
                       duration={500}
                       spy={true}
@@ -289,6 +291,7 @@ const Navbar = () => {
                   <motion.div key={`mini-${section}`} whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
                     <Link
                       to={section.toLowerCase()}
+                      href={`#${section.toLowerCase()}`}
                       smooth={true}
                       duration={500}
                       offset={-80}
