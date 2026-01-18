@@ -34,7 +34,7 @@ function Stars({ density = 80, speed = 24 }) {
       d: Math.random() * 2 + 1,
       delay: Math.random() * 2
     })),
-    [density]
+    [density, height]
   );
 
   return (
@@ -117,29 +117,7 @@ const Navbar = () => {
         style={{ boxShadow }}
         className="fixed w-full z-30"
       >
-        {/* Background layer: glass + gradient blobs */}
-        <div className="absolute inset-0" />
-        {/* Ambient blobs */}
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -top-20 -left-24 w-[28rem] h-[28rem] rounded-full blur-3xl opacity-40"
-          animate={{ x: [0, 20, -10, 0], y: [0, -12, 8, 0], scale: [1, 1.04, 0.98, 1] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(23,172,255,0.18), rgba(255,104,240,0.12), transparent)"
-          }}
-        />
-        <motion.div
-          aria-hidden
-          className="pointer-events-none absolute -bottom-16 -right-24 w-[26rem] h-[26rem] rounded-full blur-3xl opacity-35"
-          animate={{ x: [0, -18, 10, 0], y: [0, 10, -8, 0], scale: [1, 1.06, 0.96, 1] }}
-          transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-          style={{
-            background:
-              "radial-gradient(closest-side, rgba(255,104,240,0.16), rgba(23,172,255,0.1), transparent)"
-          }}
-        />
+       
 
         {/* Content */}
         <motion.nav 
